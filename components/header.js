@@ -1,22 +1,40 @@
 import Link from 'next/link'
 
 function Header({ user, loading }) {
+  console.log(user)
   return (
     <header>
-      <nav>
+      <nav>        
         <ul>
+          
           <li>
             <Link href="/">
               <a>Home</a>
             </Link>
           </li>
+            {
+            !loading && 
+              (user ? (
+                  <>
+                    <li>
+                      <Link href="/advanced/profiles">
+                        <a>Perfiles</a>
+                      </Link>
+                    </li>
+                  </>
+                ):(
+                  <>
+                  </>
+            ))}
           <li>
             <Link href="/about">
               <a>About</a>
             </Link>
           </li>
           {!loading &&
-            (user ? (
+          
+            (user  ? (
+              
               <>
                 <li>
                   <a href="/api/logout">Logout</a>
