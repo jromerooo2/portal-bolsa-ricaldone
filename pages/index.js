@@ -6,7 +6,7 @@ function Home() {
 
   return (
     <Layout user={user} loading={loading}>
-      <h1>Bolsa de Ricaldone</h1>
+      <h1 className='font-bold text-2xl'>Bolsa de Ricaldone</h1>
 
       {loading && <p>Loading login info...</p>}
 

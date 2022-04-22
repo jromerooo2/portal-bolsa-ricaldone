@@ -4,9 +4,8 @@ function Header({ user, loading }) {
   console.log(user)
   return (
     <header>
-      <nav>        
-        <ul>
-          
+      <nav className="font-bold">        
+        <ul>         
           <li>
             <Link href="/">
               <a>Home</a>
@@ -28,7 +27,7 @@ function Header({ user, loading }) {
             ))}
           <li>
             <Link href="/about">
-              <a>About</a>
+              <a>Sobre Nosotros</a>
             </Link>
           </li>
           {!loading &&
