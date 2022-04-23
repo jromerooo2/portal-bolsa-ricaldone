@@ -1,0 +1,87 @@
+{
+    "users": [
+      {
+        "userId": 1,
+        "firstName": "Krish",
+        "lastName": "Lee",
+        "phoneNumber": "123456",
+        "emailAddress": "krish.lee@learningcontainer.com",
+        "exalumno": true,
+        "img": "https://doodleipsum.com/700/avatar-3?i=8c67138e7189930114c4d7da3cb11df6"
+      },
+      {
+        "userId": 2,
+        "firstName": "racks",
+        "lastName": "jacson",
+        "phoneNumber": "123456",
+        "emailAddress": "racks.jacson@learningcontainer.com",
+        "exalumno": false,
+        "img": "https://doodleipsum.com/700/avatar-3?i=8c67138e7189930114c4d7da3cb11df6"
+      },
+      {
+        "userId": 3,
+        "firstName": "denial",
+        "lastName": "roast",
+        "phoneNumber": "33333333",
+        "emailAddress": "denial.roast@learningcontainer.com",
+        "exalumno": true,
+        "img": "https://doodleipsum.com/700/avatar-3?i=8c67138e7189930114c4d7da3cb11df6"
+      },
+      {
+        "userId": 4,
+        "firstName": "devid",
+        "lastName": "neo",
+        "phoneNumber": "222222222",
+        "emailAddress": "devid.neo@learningcontainer.com",
+        "exalumno": false,
+        "img": "https://doodleipsum.com/700/avatar-3?i=8c67138e7189930114c4d7da3cb11df6"
+      },
+      {
+        "userId": 5,
+        "firstName": "jone",
+        "lastName": "mac",
+        "phoneNumber": "111111111",
+        "emailAddress": "jone.mac@learningcontainer.com",
+        "exalumno": true,
+        "img": "https://doodleipsum.com/700/avatar-3?i=8c67138e7189930114c4d7da3cb11df6"
+      },
+      {
+        "userId": 6,
+        "firstName": "jane",
+        "lastName": "doe",
+        "phoneNumber": "222222222",
+        "emailAddress": "racks.jacson@learningcontainer.com",
+        "exalumno": false,
+        "img": "https://doodleipsum.com/700/avatar-3?i=8c67138e7189930114c4d7da3cb11df6"
+      },
+      {
+        "userId": 7,
+        "firstName": "jane",
+        "lastName": "doe",
+        "phoneNumber": "222222222",
+        "emailAddress": "devid.neo@learningcontainer.com",
+        "exalumno": true,
+        "img": "https://doodleipsum.com/700/avatar-3?i=8c67138e7189930114c4d7da3cb11df6"
+      },
+      {
+        "userId": 8,
+        "firstName": "jane",
+        "lastName": "doe",
+        "phoneNumber": "222222222",
+        "emailAddress": "devid.neo@learningcontainer.com",
+        "exalumno": false,
+        "img": "https://doodleipsum.com/700/avatar-3?i=8c67138e7189930114c4d7da3cb11df6"
+      },
+      {
+        "userId": 9,
+        "firstName": "jane",
+        "lastName": "doe",
+        "phoneNumber": "222222222",
+        "emailAddress": "racks.jacson@learningcontainer.com",
+        "exalumno": true,
+        "img": "https://doodleipsum.com/700/avatar-3?i=8c67138e7189930114c4d7da3cb11df6"
+      }
+      
+
+    ]
+  }

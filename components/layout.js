@@ -3,7 +3,7 @@ import Header from './header'
 
 function Layout({ user, loading = false, children }) {
   return (
-    <>
+    <div className=''>
       <Head>
         <title>Bolsa Ricaldone</title>
         <script src="https://cdn.tailwindcss.com"></script>
@@ -11,11 +11,11 @@ function Layout({ user, loading = false, children }) {
 
       <Header user={user} loading={loading} />
 
-      <main>
-        <div className="flex flex-col items-center justify-center">{children}</div>
+      <main className='p-4'>
+        <div >{children}</div>
       </main>
 
-    </>
+    </div>
   )
 }
 
