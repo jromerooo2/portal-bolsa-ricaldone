@@ -5,8 +5,10 @@ function profiles({user}){
     return (
         <>
             <Layout user={user}>
-                <h1>Perfiles Disponibles</h1>
-                <p>Bienvenido {user.nickname}, aquí encontraras todos los perfiles disponibles para contratos. </p>
+                <h1 className="font-bold text-3xl">Perfiles Disponibles</h1>
+                <p>
+                    Bienvenido {user.nickname}, aquí encontraras todos los perfiles disponibles para contratos. 
+                </p>
             </Layout>
         </>
     )

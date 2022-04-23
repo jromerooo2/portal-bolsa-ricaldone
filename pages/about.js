@@ -6,7 +6,7 @@ function About() {
 
   return (
     <Layout user={user} loading={loading}>
-      <h1>Sobre Nosotros</h1>
+      <h1 className='font-bold text-3xl'>Sobre Nosotros</h1>
       <p>
         lorem ipsum dolor sit amet, consectetur adipiscing elit lorem.
       </p>

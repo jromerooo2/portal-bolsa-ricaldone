@@ -6,28 +6,20 @@ function Home() {
 
   return (
     <Layout user={user} loading={loading}>
-      <h1 className='font-bold text-2xl'>Bolsa de Ricaldone</h1>
+      <h1 className='font-bold text-2xl'>Bolsa de Trabajos del Ricaldone</h1>
 
       {loading && <p>Loading login info...</p>}
 
       {!loading && !user && (
         <>
-          <p>
-            To test the login click in <i>Login</i>
-          </p>
-          <p>
-            Once you have logged in you should be able to click in{' '}
-            <i>Profile</i> and <i>Logout</i>
+          <p className='text-center mt-4'>
+            Bienvenido a la bolsa de trabajos del Ricaldone, por favor inicia sesión para poder<br></br> acceder a todos los perfiles disponibles para contratos.
           </p>
         </>
       )}
 
       {user && (
         <>
-          <h4>Rendered user info on the client</h4>
-          <img src={user.picture} alt="user picture" />
-          <p>nickname: {user.nickname}</p>
-          <p>name: {user.name}</p>
         </>
       )}
     </Layout>

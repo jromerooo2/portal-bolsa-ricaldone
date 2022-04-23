@@ -36,12 +36,12 @@ function Header({ user, loading }) {
               
               <>
                 <li>
-                  <a href="/api/logout">Logout</a>
+                  <a href="/api/logout">Cerrar Sesión</a>
                 </li>
               </>
             ) : (
               <li>
-                <a href="/api/login">Login</a>
+                <a href="/api/login">Iniciar Sesión</a>
               </li>
             ))}
         </ul>
