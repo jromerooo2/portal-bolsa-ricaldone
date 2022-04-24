@@ -16,7 +16,7 @@ function profiles({user}){
                 <div className="md:grid grid-cols-4 grid-rows-3">
                     {
                         dataUsers.map(user => (
-                            <>
+                            <div key={user.userId}>
                                 <Link href={'/advanced/profiles/'+user.userId} >
                                     <div key={user.userId} className="p-2 md:my-9 my-6 card cursor-pointer">
                                         <div className={`bg-white rounded-lg shadow-xl p-4 ${user.exalumno ? "border border-yellow-500":""}`}>
@@ -29,7 +29,7 @@ function profiles({user}){
                                         </div>
                                     </div>
                                 </Link>
-                            </>                            
+                            </div>                            
 
                         ))
                     }

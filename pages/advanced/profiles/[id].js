@@ -69,13 +69,13 @@ function Details({ user, profile,allProfiles }) {
                     {
                         randomProfiles.map(
                             profile => (
-                                    <>
-                                        <Link key={profile.userId} href={'/advanced/profiles/'+profile.userId} >
+                                    <div key={profile.userId}>
+                                        <Link  href={'/advanced/profiles/'+profile.userId} >
                                             <div  className="p-2 md:my-9 my-6 card cursor-pointer md:w-auto w-46">
                                                 <div className={`bg-white rounded-lg shadow-xl p-4 ${profile.exalumno ? "border border-yellow-500":""}`}>
                                                     <div className="flex items-center justify-center">
                                                         <img src={profile.img} alt={profile.name} className="rounded md:h-64 mx-auto" />
-                                                    </div>
+                                                     </div>
                                                     <div className="space-y-5">
                                                         <h1 className="font-bold text-3xl">{profile.firstName} <br></br> {profile.lastName}</h1>
                                                         {/* <h1 className="text-xl"> <b>Número de Teléfono:</b><br></br> {profile.phoneNumber}</h1> */}
@@ -84,7 +84,7 @@ function Details({ user, profile,allProfiles }) {
                                                 </div>
                                             </div>
                                         </Link>
-                                    </>
+                                    </div>
                         )) 
                     }
                 </div>
