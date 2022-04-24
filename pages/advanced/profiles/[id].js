@@ -7,18 +7,18 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Details({ user, profile,allProfiles }) {
-
-
     let randomProfiles = [];
 
-    //pickeando perfiles randoms
+    //pickeando perfiles randoms con mismas caracteristicas
 
     do {
         let rand = Math.floor(Math.random() * allProfiles.length);
-        if(randomProfiles.indexOf(allProfiles[rand]) === -1) {
+        if(randomProfiles.indexOf(allProfiles[rand]) === -1 && 
+           allProfiles[rand].userId !== profile.userId) {
+
             randomProfiles.push(allProfiles[rand]);
-        }else continue;  
-        
+
+        }         
     } while (randomProfiles.length < 4);
 
 
@@ -41,6 +41,14 @@ function Details({ user, profile,allProfiles }) {
 
     return (
         <Layout user={user}>
+            <Link href='/advanced/profiles/' >
+                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-left cursor-pointer" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <line x1="5" y1="12" x2="11" y2="18" />
+                    <line x1="5" y1="12" x2="11" y2="6" />
+                </svg>
+            </Link>
             <div className="flex items-center justify-center">
                 <div className="md:flex items-center space-x-7">
                     <img src={profile.img} alt={profile.name} className="rounded h-64 mx-auto" />
@@ -62,8 +70,8 @@ function Details({ user, profile,allProfiles }) {
                         randomProfiles.map(
                             profile => (
                                     <>
-                                        <Link href={'/advanced/profiles/'+profile.userId} >
-                                            <div key={profile.userId} className="p-2 md:my-9 my-6 card cursor-pointer md:w-auto w-46">
+                                        <Link key={profile.userId} href={'/advanced/profiles/'+profile.userId} >
+                                            <div  className="p-2 md:my-9 my-6 card cursor-pointer md:w-auto w-46">
                                                 <div className={`bg-white rounded-lg shadow-xl p-4 ${profile.exalumno ? "border border-yellow-500":""}`}>
                                                     <div className="flex items-center justify-center">
                                                         <img src={profile.img} alt={profile.name} className="rounded md:h-64 mx-auto" />
@@ -85,6 +93,7 @@ function Details({ user, profile,allProfiles }) {
     );
 }
 
+
 export async function getServerSideProps({ params,req, res }) {
     //Logic to get multiple curriculum profiles to render later #SSR😎 
     const session = auth0.getSession(req, res)
@@ -92,7 +101,7 @@ export async function getServerSideProps({ params,req, res }) {
     const allProfiles = data.users;
 
     for (let i = 0; i < data.users.length; i++) {
-        if (data.users[i].userId == params.id) {
+        if (data.users[i].userId === parseInt(params.id)) {
             const profile = data.users[i];
             profileRes = profile;
         }
