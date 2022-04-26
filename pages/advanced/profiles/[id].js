@@ -2,14 +2,24 @@ import Layout from "../../../components/layout";
 import auth0 from "../../../lib/auth0";
 import data from "../../../profiles.json";
 import Link from "next/link";
-
-import { ToastContainer, toast } from 'react-toastify';
+import { toast,ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 function Details({ user, profile,allProfiles }) {
     let randomProfiles = [];
 
     //pickeando perfiles randoms con mismas caracteristicas
+    const notify = () => {
+        toast.success("Se ha solicitado correctamente la Información de " + profile.firstName + " " + profile.lastName + ".", {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            theme: "dark",
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false,
+            progress: undefined,
+        });
+    }
 
     do {
         let rand = Math.floor(Math.random() * allProfiles.length);
@@ -24,20 +34,6 @@ function Details({ user, profile,allProfiles }) {
 
 
     console.log(randomProfiles);
-
-    const notify = () => {
-        console.log("notify");
-        toast.success("Se ha solicitado correctamente la Información de " + profile.firstName+" "+profile.lastName+".",  {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            theme: "dark",
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: false,
-            progress: undefined,
-        });
-    }
 
     return (
         <Layout user={user}>
@@ -58,6 +54,7 @@ function Details({ user, profile,allProfiles }) {
                         <h1 className="text-xl"> <b>Correo Electrónico:</b><br></br> {profile.emailAddress}</h1>
                         <p className="text-xl">Para conectar con el personal mostrado, haz click en el botón de abajo.</p>
                         <button onClick={notify} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Contactar</button>
+                        
                         <ToastContainer>
                         </ToastContainer>
                     </div>
