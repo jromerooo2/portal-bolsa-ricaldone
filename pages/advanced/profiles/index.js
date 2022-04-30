@@ -1,15 +1,17 @@
 import Layout from "../../../components/layout"
 import auth0 from "../../../lib/auth0"
 import data from "../../../profiles.json"
-import { PrismaClient } from "@prisma/client"
+// import { getAllPostulants } from "../../../hooks/useAllProfiles";
 import Link from "next/link";
+import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient();
+
 
 function profiles({user, profiles}){
     // console.log(users);
     const dataUsers = profiles;
-    console.log(dataUsers)
+
 
     return (
         <>
@@ -46,7 +48,7 @@ function profiles({user, profiles}){
 export async function getServerSideProps({ req, res }) {
     //Logic to get multiple curriculum profiles to render later #SSR😎 
     const session = await auth0.getSession(req, res)
-
+    
     if (!session || !session.user) {
       res.writeHead(302, {
         Location: '/api/login',
@@ -58,10 +60,10 @@ export async function getServerSideProps({ req, res }) {
 
     //Logic for db querying
     const profiles = await prisma.Postulants.findMany();
-  
+
     return { props: {
                      user: session.user,
-                     profiles 
+                     profiles
                 } }
 }
 export default profiles

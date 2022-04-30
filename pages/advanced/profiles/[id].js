@@ -4,7 +4,12 @@ import data from "../../../profiles.json";
 import Link from "next/link";
 import { toast,ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-function Details({ user, profile,allProfiles }) {
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient();
+
+function Details({ user, profile}) {
+    console.log(profile)
     let randomProfiles = [];
 
     //pickeando perfiles randoms con mismas caracteristicas
@@ -21,19 +26,16 @@ function Details({ user, profile,allProfiles }) {
         });
     }
 
-    do {
-        let rand = Math.floor(Math.random() * allProfiles.length);
-        if(randomProfiles.indexOf(allProfiles[rand]) === -1 && 
-           allProfiles[rand].userId !== profile.userId) {
+    // do {
+    //     let rand = Math.floor(Math.random() * allProfiles.length);
+    //     if(randomProfiles.indexOf(allProfiles[rand]) === -1 && 
+    //        allProfiles[rand].userId !== profile.userId) {
 
-            randomProfiles.push(allProfiles[rand]);
+    //         randomProfiles.push(allProfiles[rand]);
 
-        }         
-    } while (randomProfiles.length < 4);
+    //     }         
+    // } while (randomProfiles.length < 4);
 
-
-
-    console.log(randomProfiles);
 
     return (
         <Layout user={user}>
@@ -94,15 +96,11 @@ function Details({ user, profile,allProfiles }) {
 export async function getServerSideProps({ params,req, res }) {
     //Logic to get multiple curriculum profiles to render later #SSR😎 
     const session = auth0.getSession(req, res)
-    let  profileRes;
-    const allProfiles = data.users;
-
-    for (let i = 0; i < data.users.length; i++) {
-        if (data.users[i].userId === parseInt(params.id)) {
-            const profile = data.users[i];
-            profileRes = profile;
+    const profile = await prisma.postulants.findUnique({
+        where: {
+            idPostulant: params.id
         }
-    }
+    })
 
     if (!session || !session.user) {
       res.writeHead(302, {
@@ -114,8 +112,7 @@ export async function getServerSideProps({ params,req, res }) {
 
     return { props:  {
                          user: session.user,
-                         profile: profileRes,
-                         allProfiles                        
+                         profile                                               
                      } 
             }
 }
