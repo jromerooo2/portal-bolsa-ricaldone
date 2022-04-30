@@ -1,11 +1,16 @@
 import Layout from "../../../components/layout"
 import auth0 from "../../../lib/auth0"
 import data from "../../../profiles.json"
+import { PrismaClient } from "@prisma/client"
 import Link from "next/link";
 
-function profiles({user}){
+const prisma = new PrismaClient();
+
+function profiles({user, profiles}){
     // console.log(users);
-    const dataUsers = data.users;
+    const dataUsers = profiles;
+    console.log(dataUsers)
+
     return (
         <>
             <Layout user={user}>
@@ -49,7 +54,14 @@ export async function getServerSideProps({ req, res }) {
       res.end()
       return
     }
+
+
+    //Logic for db querying
+    const profiles = await prisma.Postulants.findMany();
   
-    return { props: { user: session.user } }
+    return { props: {
+                     user: session.user,
+                     profiles 
+                } }
 }
 export default profiles

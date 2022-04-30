@@ -1,0 +1,135 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model AditionalSkills {
+  idAskills   Int         @id(map: "PK__Aditiona__88B395ABEBD07F09") @default(autoincrement())
+  NameSkill   String?     @db.VarChar(50)
+  idLevel     Int?
+  idPostulant Int?
+  Levels      Levels?     @relation(fields: [idLevel], references: [idLevel], onDelete: NoAction, onUpdate: NoAction, map: "fk_AditionalSkillsLevel")
+  Postulants  Postulants? @relation(fields: [idPostulant], references: [idPostulant], onDelete: NoAction, onUpdate: NoAction, map: "fk_Postulant_aditionalSkills")
+}
+
+model Branches {
+  idBranch    Int         @id(map: "PK__Branches__A33E4FC45D3F9311") @default(autoincrement())
+  Branch      String?     @db.VarChar(50)
+  idLevel     Int?
+  idPostulant Int?
+  Levels      Levels?     @relation(fields: [idLevel], references: [idLevel], onDelete: NoAction, onUpdate: NoAction, map: "fk_BranchesLevel")
+  Postulants  Postulants? @relation(fields: [idPostulant], references: [idPostulant], onDelete: NoAction, onUpdate: NoAction, map: "fk_Postulant_branches")
+}
+
+model Departments {
+  idDepartment                                   Int          @id(map: "PK__Departme__FE2F9795443A79B3") @default(autoincrement())
+  Department                                     String?      @db.VarChar(80)
+  Postulants_DepartmentsToPostulants_IDepartment Postulants[] @relation("DepartmentsToPostulants_IDepartment")
+  Postulants_DepartmentsToPostulants_RDepartment Postulants[] @relation("DepartmentsToPostulants_RDepartment")
+}
+
+model Genders {
+  idGender    Int           @id(map: "PK__Genders__85D2078056224426") @default(autoincrement())
+  Gender      String?       @db.VarChar(14)
+  Postulants  Postulants[]
+  UserSystems UserSystems[]
+}
+
+model GeneralSkills {
+  idGskill    Int         @id(map: "PK__GeneralS__1783224D04B6D529") @default(autoincrement())
+  Skill       String?     @db.VarChar(Max)
+  idLevel     Int?
+  idPostulant Int?
+  Levels      Levels?     @relation(fields: [idLevel], references: [idLevel], onDelete: NoAction, onUpdate: NoAction, map: "fk_GeneralSkillsLevels")
+  Postulants  Postulants? @relation(fields: [idPostulant], references: [idPostulant], onDelete: NoAction, onUpdate: NoAction, map: "fk_Postulant_GeneralSkills")
+}
+
+model Levels {
+  idLevel         Int               @id(map: "PK__Levels__995F5B34DD44A5FE") @default(autoincrement())
+  Levels          String?           @db.VarChar(30)
+  AditionalSkills AditionalSkills[]
+  Branches        Branches[]
+  GeneralSkills   GeneralSkills[]
+}
+
+model Moderations {
+  idMod         Int         @id(map: "PK__Moderati__3DC69A5D70F30911") @default(autoincrement())
+  idPostulant   Int?
+  dateMod       DateTime?   @db.Date
+  context       String?     @db.VarChar(200)
+  request       String?     @db.VarChar(100)
+  requestedInfo String?     @db.VarChar(100)
+  Postulants    Postulants? @relation(fields: [idPostulant], references: [idPostulant], onDelete: NoAction, onUpdate: NoAction, map: "fk_ModerationsPostulants")
+}
+
+model Postulants {
+  idPostulant                                     Int               @id(map: "PK__Postulan__35484EE834A5C6D1") @default(autoincrement())
+  namePostulant                                   String?           @db.VarChar(30)
+  mailPostulant                                   String?           @db.VarChar(45)
+  Pword                                           String?           @db.VarChar(10)
+  photoPostulant                                  Bytes?            @db.Image
+  resumePDF                                       Bytes?            @db.VarBinary(1)
+  resumeDetails                                   String?           @db.VarChar(Max)
+  mailverification                                Boolean?
+  Gender                                          Int?
+  States                                          Int?
+  Alumni                                          Boolean?
+  RDepartment                                     Int?
+  IDepartment                                     Int?
+  WSubject                                        Int?
+  Progress                                        Int?
+  Genders                                         Genders?          @relation(fields: [Gender], references: [idGender], onDelete: NoAction, onUpdate: NoAction, map: "fk_PostulantsGender")
+  Departments_DepartmentsToPostulants_IDepartment Departments?      @relation("DepartmentsToPostulants_IDepartment", fields: [IDepartment], references: [idDepartment], onDelete: NoAction, onUpdate: NoAction, map: "fk_postulantsIDDepartment")
+  Progress_PostulantsToProgress                   Progress?         @relation(fields: [Progress], references: [idProgress], onDelete: NoAction, onUpdate: NoAction, map: "fk_postulantsProgress")
+  Departments_DepartmentsToPostulants_RDepartment Departments?      @relation("DepartmentsToPostulants_RDepartment", fields: [RDepartment], references: [idDepartment], onDelete: NoAction, onUpdate: NoAction, map: "fk_postulantsRDepartment")
+  States_PostulantsToStates                       States?           @relation(fields: [States], references: [idState], onDelete: NoAction, onUpdate: NoAction, map: "fk_PostulantsState")
+  workSubjects                                    workSubjects?     @relation(fields: [WSubject], references: [idSubject], onDelete: NoAction, onUpdate: NoAction, map: "fk_postulantsWSubject")
+  AditionalSkills                                 AditionalSkills[]
+  Branches                                        Branches[]
+  GeneralSkills                                   GeneralSkills[]
+  Moderations                                     Moderations[]
+}
+
+model Progress {
+  idProgress Int          @id(map: "PK__Progress__499DE999A276A73F") @default(autoincrement())
+  Progress   String?      @db.VarChar(30)
+  Postulants Postulants[]
+}
+
+model Rols {
+  idRol       Int           @id(map: "PK__Rols__3C872F7672EE7941") @default(autoincrement())
+  Rol         String?       @db.VarChar(30)
+  UserSystems UserSystems[]
+}
+
+model States {
+  idState     Int           @id(map: "PK__States__98CB3723751581C3") @default(autoincrement())
+  States      String?       @db.VarChar(30)
+  Postulants  Postulants[]
+  UserSystems UserSystems[]
+}
+
+model UserSystems {
+  idUser           Int      @id(map: "PK__UserSyst__3717C98218E329D9") @default(autoincrement())
+  idState          Int?
+  nameUser         String?  @db.VarChar(30)
+  Pword            String?  @db.VarChar(10)
+  mailUser         String?  @db.VarChar(45)
+  numberUser       Decimal? @db.Decimal(8, 0)
+  idRol            Int?
+  mailverification Boolean?
+  idGender         Int?
+  Genders          Genders? @relation(fields: [idGender], references: [idGender], onDelete: NoAction, onUpdate: NoAction, map: "fk_uSystemGender")
+  Rols             Rols?    @relation(fields: [idRol], references: [idRol], onDelete: NoAction, onUpdate: NoAction, map: "fk_uSystemRol")
+  States           States?  @relation(fields: [idState], references: [idState], onDelete: NoAction, onUpdate: NoAction, map: "fk_uSystemState")
+}
+
+model workSubjects {
+  idSubject   Int          @id(map: "PK__workSubj__A324CF9E52A2FBB2") @default(autoincrement())
+  WorkSubject String?      @db.VarChar(100)
+  Postulants  Postulants[]
+}
