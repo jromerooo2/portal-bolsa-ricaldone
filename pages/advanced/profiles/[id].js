@@ -6,6 +6,7 @@ import { toast,ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { PrismaClient } from '@prisma/client'
 import axios from "axios";
+import { UserContext } from "@auth0/nextjs-auth0";
 
 const prisma = new PrismaClient();
 
@@ -14,30 +15,45 @@ function Details({ user, profile}) {
     let randomProfiles = [];
 
     const result = async () => {
-            await axios.post("/api/addMod", {
+        return await axios.post("/api/addMod", {
             idPostulant: profile.idPostulant,
             dateMod: new Date(),
-            context: "",
-            request: "",
-            requestedInfo: ""
+            context: user.nickname+"@gmail.com",
+            request: user.name,
+            requestedInfo: "Informacion solicitada del postulante: "+profile.namePostulant+" "+profile.lastName,
         })
+        
 }
 
 
     //pickeando perfiles randoms con mismas caracteristicas
     const request = async () => {
-        result();
+        const res = await result();
         
-        toast.success("Se ha solicitado correctamente la Información de " + profile.firstName + " " + profile.lastName + ".", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            theme: "dark",
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: false,
-            progress: undefined,
-        });
+        if(res.status === 200){
+            toast.success("Se ha solicitado correctamente la Información de " + profile.namePostulant + " " + profile.lastName + ".", {
+                position: "bottom-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                theme: "dark",
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+            });
+        }else{
+            toast.error("Ha ocurrido un error, por favor intentalo más tarde.", {
+                position: "bottom-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                theme: "dark",
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+            });
+        }
+        
     }
 
     // do {
