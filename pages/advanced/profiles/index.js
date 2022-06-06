@@ -10,7 +10,8 @@ const prisma = new PrismaClient();
 
 function profiles({user, profiles}){
     console.log(profiles);
-    const dataUsers = profiles;
+
+    const dataUsers = JSON.parse(profiles);
 
 
     return (
@@ -20,7 +21,7 @@ function profiles({user, profiles}){
                 <p className="text-center">
                     Bienvenido {user.nickname}, aquí encontraras todos los perfiles disponibles para contratos. 
                 </p>
-                <div className="md:grid grid-cols-4 grid-rows-3">
+                <div className="md:grid grid-cols-3">
                     {
                         dataUsers.map(user => (
                             <div key={user.idPostulant}>
@@ -60,10 +61,11 @@ export async function getServerSideProps({ req, res }) {
 
     //Logic for db querying
     const profiles = await prisma.Postulants.findMany();
-
+    const jsonProfiles = JSON.stringify(profiles);
+    console.log(jsonProfiles);
     return { props: {
                      user: session.user,
-                     profiles
+                     profiles: jsonProfiles
                 } }
 }
 export default profiles

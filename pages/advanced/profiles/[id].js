@@ -13,7 +13,7 @@ const prisma = new PrismaClient();
 function Details({ user, profile}) {
     console.log(profile)
     let randomProfiles = [];
-
+    profile = JSON.parse(profile);
     const result = async () => {
         return await axios.post("/api/addMod", {
             idPostulant: profile.idPostulant,
@@ -131,7 +131,7 @@ export async function getServerSideProps({ params,req, res }) {
             idPostulant: parseInt(params.id)
         }
     })
-
+    const jsonProfile = JSON.stringify(profile);
     if (!session || !session.user) {
       res.writeHead(302, {
         Location: '/api/login',
@@ -142,7 +142,7 @@ export async function getServerSideProps({ params,req, res }) {
 
     return { props:  {
                          user: session.user,
-                         profile                     
+                         profile:jsonProfile                    
                         } 
             }
 }
