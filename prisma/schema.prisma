@@ -82,12 +82,26 @@ model Postulants {
   IDepartment                                     Int?
   WSubject                                        Int?
   Progress                                        Int?
+  Salary                                          Int?
+  UniversityStatus                                Int?
+  HighType                                        Int?
+  ContractType                                    Int?
+  WorkPreference                                  Int?
+  StudyLevel                                      Int?
+  WorkStatus                                      Int?
+  lastName                                        String?           @db.VarChar(30)
+  ContractType_ContractTypeToPostulants           ContractType?     @relation(fields: [ContractType], references: [idContractT], onDelete: NoAction, onUpdate: NoAction, map: "fkTipoContrato")
   Genders                                         Genders?          @relation(fields: [Gender], references: [idGender], onDelete: NoAction, onUpdate: NoAction, map: "fk_PostulantsGender")
+  HighType_HighTypeToPostulants                   HighType?         @relation(fields: [HighType], references: [idType], onDelete: NoAction, onUpdate: NoAction, map: "fkHighType")
   Departments_DepartmentsToPostulants_IDepartment Departments?      @relation("DepartmentsToPostulants_IDepartment", fields: [IDepartment], references: [idDepartment], onDelete: NoAction, onUpdate: NoAction, map: "fk_postulantsIDDepartment")
   Progress_PostulantsToProgress                   Progress?         @relation(fields: [Progress], references: [idProgress], onDelete: NoAction, onUpdate: NoAction, map: "fk_postulantsProgress")
   Departments_DepartmentsToPostulants_RDepartment Departments?      @relation("DepartmentsToPostulants_RDepartment", fields: [RDepartment], references: [idDepartment], onDelete: NoAction, onUpdate: NoAction, map: "fk_postulantsRDepartment")
-  States_PostulantsToStates                       States?           @relation(fields: [States], references: [idState], onDelete: NoAction, onUpdate: NoAction, map: "fk_PostulantsState")
+  SalaryState                                     SalaryState?      @relation(fields: [Salary], references: [idSalary], onDelete: NoAction, onUpdate: NoAction, map: "fkSalaryStatus")
+  StudyLevels                                     StudyLevels?      @relation(fields: [StudyLevel], references: [idSLevel], onDelete: NoAction, onUpdate: NoAction, map: "fkNivelEstudiante")
+  UniversityStates                                UniversityStates? @relation(fields: [UniversityStatus], references: [idUState], onDelete: NoAction, onUpdate: NoAction, map: "fkUniversityStatus")
   workSubjects                                    workSubjects?     @relation(fields: [WSubject], references: [idSubject], onDelete: NoAction, onUpdate: NoAction, map: "fk_postulantsWSubject")
+  WorkPreference_PostulantsToWorkPreference       WorkPreference?   @relation(fields: [WorkPreference], references: [idPreference], onDelete: NoAction, onUpdate: NoAction, map: "fkPreferenciaTrabajo")
+  WorkState                                       WorkState?        @relation(fields: [WorkStatus], references: [idWorkSatet], onDelete: NoAction, onUpdate: NoAction, map: "fkStatusWork")
   AditionalSkills                                 AditionalSkills[]
   Branches                                        Branches[]
   GeneralSkills                                   GeneralSkills[]
@@ -109,7 +123,6 @@ model Rols {
 model States {
   idState     Int           @id(map: "PK__States__98CB3723751581C3") @default(autoincrement())
   States      String?       @db.VarChar(30)
-  Postulants  Postulants[]
   UserSystems UserSystems[]
 }
 
@@ -117,7 +130,7 @@ model UserSystems {
   idUser           Int      @id(map: "PK__UserSyst__3717C98218E329D9") @default(autoincrement())
   idState          Int?
   nameUser         String?  @db.VarChar(30)
-  Pword            String?  @db.VarChar(10)
+  Pword            String?  @db.VarChar(250)
   mailUser         String?  @db.VarChar(45)
   numberUser       Decimal? @db.Decimal(8, 0)
   idRol            Int?
@@ -131,5 +144,47 @@ model UserSystems {
 model workSubjects {
   idSubject   Int          @id(map: "PK__workSubj__A324CF9E52A2FBB2") @default(autoincrement())
   WorkSubject String?      @db.VarChar(100)
+  Postulants  Postulants[]
+}
+
+model ContractType {
+  idContractT Int          @id(map: "PK__Contract__EB98699F6BE5D13C") @default(autoincrement())
+  WType       String?      @db.VarChar(50)
+  Postulants  Postulants[]
+}
+
+model HighType {
+  idType     Int          @id(map: "PK__HighType__4BB98BC63EA16C16") @default(autoincrement())
+  HighType   String?      @db.VarChar(50)
+  Postulants Postulants[]
+}
+
+model SalaryState {
+  idSalary   Int          @id(map: "PK__SalarySt__BDC60297B3FE4DF4") @default(autoincrement())
+  Salary     String?      @db.VarChar(50)
+  Postulants Postulants[]
+}
+
+model StudyLevels {
+  idSLevel   Int          @id(map: "PK__StudyLev__92F4D6340F08F9F6") @default(autoincrement())
+  studyLevel String?      @db.VarChar(50)
+  Postulants Postulants[]
+}
+
+model UniversityStates {
+  idUState   Int          @id(map: "PK__Universi__02C48A0075C7E321") @default(autoincrement())
+  StateU     String?      @db.VarChar(50)
+  Postulants Postulants[]
+}
+
+model WorkPreference {
+  idPreference Int          @id(map: "PK__WorkPref__DA6659E3F992AE07") @default(autoincrement())
+  WPreference  String?      @db.VarChar(50)
+  Postulants   Postulants[]
+}
+
+model WorkState {
+  idWorkSatet Int          @id(map: "PK__WorkStat__F4CA258E04E8003E") @default(autoincrement())
+  WorkState   String?      @db.VarChar(50)
   Postulants  Postulants[]
 }

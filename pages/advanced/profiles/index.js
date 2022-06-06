@@ -9,7 +9,7 @@ const prisma = new PrismaClient();
 
 
 function profiles({user, profiles}){
-    // console.log(users);
+    console.log(profiles);
     const dataUsers = profiles;
 
 
@@ -23,13 +23,13 @@ function profiles({user, profiles}){
                 <div className="md:grid grid-cols-4 grid-rows-3">
                     {
                         dataUsers.map(user => (
-                            <div key={user.userId}>
-                                <Link href={'/advanced/profiles/'+user.userId} >
+                            <div key={user.idPostulant}>
+                                <Link href={'/advanced/profiles/'+user.idPostulant} >
                                     <div key={user.userId} className="p-2 md:my-9 my-6 card cursor-pointer">
-                                        <div className={`bg-white rounded-lg shadow-xl p-4 ${user.exalumno ? "border border-yellow-500":""}`}>
-                                            <span className={`rounded p-2 bg-red-500 text-white absolute -mt-8 ${user.exalumno ? "":"hidden"}`}>Recomendado</span>
-                                            <img src={user.img} alt={user.name} className="rounded h-36 mx-auto" />
-                                            <h2 className="font-bold text-xl">{user.firstName +" "+ user.lastName}</h2>
+                                        <div className={`bg-white rounded-lg shadow-xl p-4 ${user.Alumni ? "border border-yellow-500":""}`}>
+                                            <span className={`rounded p-2 bg-red-500 text-white absolute -mt-8 ${user.Alumni ? "":"hidden"}`}>Recomendado</span>
+                                            <img src={user.img} alt={user.namePostulant} className="rounded h-36 mx-auto" />
+                                            <h2 className="font-bold text-xl">{user.namePostulant +" "+ user.lastName}</h2>
                                             <p>{user.email}</p>
                                             <p>{user.phoneNumber}</p>
                                             <p>{user.emailAddress}</p>

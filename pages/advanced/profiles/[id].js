@@ -51,7 +51,7 @@ function Details({ user, profile}) {
                 <div className="md:flex items-center space-x-7">
                     <img src={profile.img} alt={profile.name} className="rounded h-64 mx-auto" />
                     <div className="space-y-5">
-                        <h1 className="font-bold text-3xl">{profile.firstName +" " +profile.lastName}</h1>
+                        <h1 className="font-bold text-3xl">{profile.namePostulant +" " +profile.lastName}</h1>
                         <h1 className="text-xl"> <b>Número de Teléfono:</b><br></br> {profile.phoneNumber}</h1>
                         <h1 className="text-xl"> <b>Correo Electrónico:</b><br></br> {profile.emailAddress}</h1>
                         <p className="text-xl">Para conectar con el personal mostrado, haz click en el botón de abajo.</p>
@@ -76,7 +76,7 @@ function Details({ user, profile}) {
                                                         <img src={profile.img} alt={profile.name} className="rounded md:h-64 mx-auto" />
                                                      </div>
                                                     <div className="space-y-5">
-                                                        <h1 className="font-bold text-3xl">{profile.firstName} <br></br> {profile.lastName}</h1>
+                                                        <h1 className="font-bold text-3xl">{profile.namePostulant} <br></br> {profile.lastName}</h1>
                                                         {/* <h1 className="text-xl"> <b>Número de Teléfono:</b><br></br> {profile.phoneNumber}</h1> */}
                                                         {/* <h1 className="text-xl"> <b>Correo Electrónico:</b><br></br> {profile.emailAddress}</h1> */}
                                                     </div>
@@ -98,7 +98,7 @@ export async function getServerSideProps({ params,req, res }) {
     const session = auth0.getSession(req, res)
     const profile = await prisma.postulants.findUnique({
         where: {
-            idPostulant: params.id
+            idPostulant: parseInt(params.id)
         }
     })
 
