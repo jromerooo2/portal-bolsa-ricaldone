@@ -5,6 +5,7 @@ import Link from "next/link";
 import { toast,ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { PrismaClient } from '@prisma/client'
+import axios from "axios";
 
 const prisma = new PrismaClient();
 
@@ -12,8 +13,21 @@ function Details({ user, profile}) {
     console.log(profile)
     let randomProfiles = [];
 
+    const result = async () => {
+            await axios.post("/api/addMod", {
+            idPostulant: profile.idPostulant,
+            dateMod: new Date(),
+            context: "",
+            request: "",
+            requestedInfo: ""
+        })
+}
+
+
     //pickeando perfiles randoms con mismas caracteristicas
-    const notify = () => {
+    const request = async () => {
+        result();
+        
         toast.success("Se ha solicitado correctamente la Información de " + profile.firstName + " " + profile.lastName + ".", {
             position: "bottom-center",
             autoClose: 5000,
@@ -55,7 +69,7 @@ function Details({ user, profile}) {
                         <h1 className="text-xl"> <b>Número de Teléfono:</b><br></br> {profile.phoneNumber}</h1>
                         <h1 className="text-xl"> <b>Correo Electrónico:</b><br></br> {profile.emailAddress}</h1>
                         <p className="text-xl">Para conectar con el personal mostrado, haz click en el botón de abajo.</p>
-                        <button onClick={notify} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Contactar</button>
+                        <button onClick={request} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Contactar</button>
                         
                         <ToastContainer>
                         </ToastContainer>
@@ -112,8 +126,8 @@ export async function getServerSideProps({ params,req, res }) {
 
     return { props:  {
                          user: session.user,
-                         profile                                               
-                     } 
+                         profile                     
+                        } 
             }
 }
 
