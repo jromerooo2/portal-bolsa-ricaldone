@@ -21,7 +21,7 @@ function profiles({user, profiles}){
                 <p className="text-center">
                     Bienvenido {user.nickname}, aquí encontraras todos los perfiles disponibles para contratos. 
                 </p>
-                <div className="md:grid grid-cols-3">
+                <div className="md:grid grid-cols-3 grid-rows-4">
                     {
                         dataUsers.map(user => (
                             <div key={user.idPostulant}>
@@ -48,7 +48,7 @@ function profiles({user, profiles}){
 }
 export async function getServerSideProps({ req, res }) {
     //Logic to get multiple curriculum profiles to render later #SSR😎 
-    const session = await auth0.getSession(req, res)
+    const session = auth0.getSession(req, res)
     
     if (!session || !session.user) {
       res.writeHead(302, {
