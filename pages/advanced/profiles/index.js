@@ -21,7 +21,7 @@ function profiles({user, profiles}){
                 <p className="text-center">
                     Bienvenido {user.nickname}, aquí encontraras todos los perfiles disponibles para contratos. 
                 </p>
-                <div className="md:grid grid-cols-3 grid-rows-4">
+                <div className="md:grid grid-cols-3">
                     {
                         dataUsers.map(user => (
                             <div key={user.idPostulant}>
