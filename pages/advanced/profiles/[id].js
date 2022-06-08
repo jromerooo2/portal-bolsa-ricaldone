@@ -8,14 +8,15 @@ import axios from "axios";
 function Details({ user, profile}) {
     
     let randomProfiles = [];
-    console.log(profile)
     profile = JSON.parse(profile);
+    user = JSON.parse(user);
+    console.log(user)
     const result = async () => {
         return await axios.post("/api/addMod", {
             idPostulant: profile.idPostulant,
             dateMod: new Date(),
-            context: user.nickname+"@gmail.com",
-            request: user.name,
+            context: user.mailUser,
+            request: user.nameUser,
             requestedInfo: "Informacion solicitada del postulante: "+profile.namePostulant+" "+profile.lastName,
         })
         
@@ -132,6 +133,9 @@ function Details({ user, profile}) {
 
 
 export async function getServerSideProps({ params,req, res }) {    
+    const contratista = await axios.get("http://localhost:3000/api/me");
+    
+    const contratistaJSON = JSON.stringify(contratista.data.decoded.responseBd);
     //Logic to get multiple curriculum profiles to render later #SSR😎 
     const { id } = params;
 
@@ -141,6 +145,7 @@ export async function getServerSideProps({ params,req, res }) {
 
 
     return { props:  {
+                                 user: contratistaJSON,
                                  profile:jsonProfile                    
                     } 
             }
