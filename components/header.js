@@ -1,12 +1,7 @@
 import Link from 'next/link'
 
-function Header({user}) {
-
-  const handleLogout = () => {
-    localStorage.removeItem('user')
-    window.location.reload()
-  }
-  
+function Header() {
+  const user = false;
   return (
     <header>
       <nav className="font-bold">        
@@ -40,7 +35,7 @@ function Header({user}) {
               
               <>
                 <li>
-                  <a onClick={handleLogout}>Cerrar Sesión</a>
+                  <a className='cursor-pointer' onClick={handleLogout}>Cerrar Sesión</a>
                 </li>
               </>
             ) : (

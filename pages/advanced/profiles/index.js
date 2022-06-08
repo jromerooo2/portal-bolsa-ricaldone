@@ -1,25 +1,20 @@
 import Layout from "../../../components/layout"
-import auth0 from "../../../lib/auth0"
-import data from "../../../profiles.json"
-// import { getAllPostulants } from "../../../hooks/useAllProfiles";
 import Link from "next/link";
 import { PrismaClient } from "@prisma/client"
-
+import axios from "axios";
 const prisma = new PrismaClient();
 
 
-function profiles({user, profiles}){
-    console.log(profiles);
-
+function profiles({contratista, profiles}){
     const dataUsers = JSON.parse(profiles);
-
-
+    const user = JSON.parse(contratista);
+    console.log(user)
     return (
         <>
             <Layout user={user}>
                 <h1 className="font-bold text-3xl p-8 text-center">Perfiles Disponibles</h1>
                 <p className="text-center">
-                    Bienvenido {user.nickname}, aquí encontraras todos los perfiles disponibles para contratos. 
+                    Bienvenido {user.nameUser}, aquí encontraras todos los perfiles disponibles para contratos. 
                 </p>
                 <div className="md:grid grid-cols-3">
                     {
@@ -47,26 +42,17 @@ function profiles({user, profiles}){
     )
 }
 export async function getServerSideProps({ req, res }) {
-    //Logic to get multiple curriculum profiles to render later #SSR😎 
+    //querying user from jwtapi
+    const contratista = await axios.get("http://localhost:3000/api/me");
     
-    const session = auth0.getSession(req, res)
-    
-    if (!session || !session.user) {
-      res.writeHead(302, {
-        Location: '/api/login',
-      })
-      res.end()
-      return
-    }
-
+    const contratistaJSON = JSON.stringify(contratista.data.decoded.responseBd);
 
     //Logic for db querying
     const profiles = await prisma.Postulants.findMany();
     const jsonProfiles = JSON.stringify(profiles);
-    console.log(jsonProfiles);
     return { props: {
-                     user: session.user,
-                     profiles: jsonProfiles
+                    contratista:contratistaJSON,                    
+                    profiles: jsonProfiles
                 } }
 }
 export default profiles

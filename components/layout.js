@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Header from './header'
 
-function Layout({user,children}) {
+function Layout({children}) {
   
   return (
     <div className=''>
@@ -13,7 +13,7 @@ function Layout({user,children}) {
 
       </Head>
 
-      <Header user={user}/>
+      <Header/>
 
       <main className='p-4'>
         <div >{children}</div>

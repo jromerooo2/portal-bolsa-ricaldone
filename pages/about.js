@@ -1,11 +1,13 @@
 import Layout from '../components/layout'
-import { useFetchUser } from '../lib/user'
 
 function About() {
-  const { user, loading } = useFetchUser()
+  let user = "";
 
+  if (typeof window !== "undefined") {
+    user = localStorage.getItem("user");
+  }
   return (
-    <Layout user={user} loading={loading}>
+    <Layout user={user}>
       <h1>Sobre Nosotros</h1>
       <p>
         lorem ipsum dolor sit amet, consectetur adipiscing elit lorem.

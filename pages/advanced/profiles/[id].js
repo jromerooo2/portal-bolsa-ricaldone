@@ -1,16 +1,14 @@
 import Layout from "../../../components/layout";
-import auth0 from "../../../lib/auth0";
 import Link from "next/link";
 import { toast,ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { PrismaClient } from '@prisma/client'
+import getPostulant from "../../../lib/getPostulant";
 import axios from "axios";
 
-const prisma = new PrismaClient();
-
 function Details({ user, profile}) {
-
+    
     let randomProfiles = [];
+    console.log(profile)
     profile = JSON.parse(profile);
     const result = async () => {
         return await axios.post("/api/addMod", {
@@ -91,7 +89,7 @@ function Details({ user, profile}) {
                 </div>
             </div>
             <div className="">
-                <h1 className="font-bold text-3xl p-8 text-center text-center">Perfiles Recomendados</h1>
+                <h1 className="font-bold text-3xl p-8 text-center">Perfiles Recomendados</h1>
                 <div className="grid md:grid-cols-4 grid-cols-2 ">
                     {
                         randomProfiles.map(
@@ -123,25 +121,16 @@ function Details({ user, profile}) {
 
 export async function getServerSideProps({ params,req, res }) {    
     //Logic to get multiple curriculum profiles to render later #SSR😎 
-    const session = auth0.getSession(req, res)
-    const profile = await prisma.postulants.findUnique({
-        where: {
-            idPostulant: parseInt(params.id)
-        }
-    })
+    const { id } = params;
+
+    const profile = await getPostulant(id);
+
     const jsonProfile = JSON.stringify(profile);
-    if (!session || !session.user) {
-      res.writeHead(302, {
-        Location: '/api/login',
-      })
-      res.end()
-      return
-    }
+
 
     return { props:  {
-                         user: session.user,
-                         profile:jsonProfile                    
-                        } 
+                                 profile:jsonProfile                    
+                    } 
             }
 }
 

@@ -1,11 +1,11 @@
 import jwt from 'jsonwebtoken'
 import encrypt from '../../lib/encrypt'
 import { PrismaClient } from '@prisma/client'
+import { serialize } from 'cookie';
+
 
 const prisma = new PrismaClient();
 export default async function login(req, res) {
-
-
   if(!req.body){
     res.status(400).send('No data received')
     return
@@ -30,11 +30,22 @@ export default async function login(req, res) {
   }) 
   console.log(responseBd)
   if(responseBd !== null){
-      res.json({
-        token: jwt.sign({
-          responseBd
-        },process.env.JWT_SECRET)
-      });
+
+    const token = jwt.sign({
+      responseBd
+    },process.env.JWT_SECRET)
+
+    const serialised = serialize("SacculumJWT", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV !== "development",
+      sameSite: "strict",
+      maxAge: 60 * 60 * 24 * 30,
+      path: "/",
+    });
+
+    res.setHeader("Set-Cookie", serialised);
+
+    res.status(200).json({message: "Login successful"});
 
   }else{
     res.status(401).send('Login Incorrecto')

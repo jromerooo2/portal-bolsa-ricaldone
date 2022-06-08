@@ -1,23 +1,18 @@
 import {useState} from 'react';
-import jwt from 'jsonwebtoken';
+import axios from 'axios';
+import { useRouter } from 'next/router';
+
 export default function FormLogin() {
   const [username, setUsername] = useState("")
-
+  const router = useRouter();
   const [password, setPassword] = useState("")
 
   async function handleLogin() {
-    const res = await fetch('/api/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({username,password}),
-    }).then((t) => t.json());
-
-      const decoded = jwt.decode(res.token);
-      localStorage.setItem('user', JSON.stringify(decoded));
-    
-      window.location.reload();
+    const credentials = {username,password}
+    const res = await axios.post('/api/login',credentials)
+    if(res.status === 200){
+      router.push('/')
+    }
   }
 
   return (
