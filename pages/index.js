@@ -1,5 +1,6 @@
 import Layout from '../components/layout'
 import { useFetchUser } from '../lib/user'
+import FormLogin from '../components/FormLogin'
 
 function Home() {
   const { user, loading } = useFetchUser()
@@ -12,14 +13,7 @@ function Home() {
 
       {!loading && !user && (
         <>
-          <p className='text-center mt-4'>
-            Bienvenido a la bolsa de trabajos del Ricaldone, por favor inicia sesión para poder<br></br> acceder a todos los perfiles disponibles para contratos.
-          </p>
-        </>
-      )}
-
-      {user && (
-        <>
+          <FormLogin />
         </>
       )}
     </Layout>

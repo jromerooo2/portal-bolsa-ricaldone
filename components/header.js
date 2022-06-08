@@ -41,7 +41,7 @@ function Header({ user, loading }) {
               </>
             ) : (
               <li>
-                <a href="/api/login">Iniciar Sesión</a>
+                {/* <a href="/api/login">Iniciar Sesión</a> */}
               </li>
             ))}
         </ul>

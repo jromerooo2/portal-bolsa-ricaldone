@@ -6,7 +6,6 @@ function Layout({ user, loading = false, children }) {
     <div className=''>
       <Head>
         <title>Bolsa Ricaldone</title>
-        <script src="https://cdn.tailwindcss.com"></script>
       </Head>
 
       <Header user={user} loading={loading} />

@@ -1,17 +1,15 @@
 import Layout from "../../../components/layout";
 import auth0 from "../../../lib/auth0";
-import data from "../../../profiles.json";
 import Link from "next/link";
 import { toast,ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { PrismaClient } from '@prisma/client'
 import axios from "axios";
-import { UserContext } from "@auth0/nextjs-auth0";
 
 const prisma = new PrismaClient();
 
 function Details({ user, profile}) {
-    console.log(profile)
+
     let randomProfiles = [];
     profile = JSON.parse(profile);
     const result = async () => {
@@ -123,7 +121,7 @@ function Details({ user, profile}) {
 }
 
 
-export async function getServerSideProps({ params,req, res }) {
+export async function getServerSideProps({ params,req, res }) {    
     //Logic to get multiple curriculum profiles to render later #SSR😎 
     const session = auth0.getSession(req, res)
     const profile = await prisma.postulants.findUnique({
