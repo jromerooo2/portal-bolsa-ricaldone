@@ -3,13 +3,15 @@ import { useFetchUser } from '../lib/user'
 import FormLogin from '../components/FormLogin'
 
 function Home() {
-  const { user, loading } = useFetchUser()
+  let user = "";
 
+  if (typeof window !== "undefined") {
+    user = localStorage.getItem("user");
+  }
   return (
-    <Layout user={user} loading={loading}>
-      {loading && <p>Loading login info...</p>}
+    <Layout user={user}>
 
-      {!loading && !user && (
+      {!user && (
         <>
           <FormLogin />
         </>

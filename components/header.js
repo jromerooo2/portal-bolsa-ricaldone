@@ -1,7 +1,12 @@
 import Link from 'next/link'
 
-function Header({ user, loading }) {
-  console.log(user)
+function Header({user}) {
+
+  const handleLogout = () => {
+    localStorage.removeItem('user')
+    window.location.reload()
+  }
+  
   return (
     <header>
       <nav className="font-bold">        
@@ -12,7 +17,6 @@ function Header({ user, loading }) {
             </Link>
           </li>
             {
-            !loading && 
               (user ? (
                   <>
                     <li>
@@ -30,13 +34,13 @@ function Header({ user, loading }) {
               <a>Sobre Nosotros</a>
             </Link>
           </li>
-          {!loading &&
+          {
           
             (user  ? (
               
               <>
                 <li>
-                  <a href="/api/logout">Cerrar Sesión</a>
+                  <a onClick={handleLogout}>Cerrar Sesión</a>
                 </li>
               </>
             ) : (

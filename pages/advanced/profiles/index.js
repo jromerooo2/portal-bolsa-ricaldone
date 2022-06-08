@@ -48,6 +48,7 @@ function profiles({user, profiles}){
 }
 export async function getServerSideProps({ req, res }) {
     //Logic to get multiple curriculum profiles to render later #SSR😎 
+    
     const session = auth0.getSession(req, res)
     
     if (!session || !session.user) {

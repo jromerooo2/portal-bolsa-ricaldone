@@ -30,7 +30,6 @@ export default async function login(req, res) {
   }) 
   console.log(responseBd)
   if(responseBd !== null){
-
       res.json({
         token: jwt.sign({
           responseBd

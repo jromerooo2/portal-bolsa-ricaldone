@@ -6,7 +6,6 @@ export default function FormLogin() {
   const [password, setPassword] = useState("")
 
   async function handleLogin() {
-    alert(`Username: ${username} Password: ${password}`)
     const res = await fetch('/api/login', {
       method: 'POST',
       headers: {
@@ -16,7 +15,9 @@ export default function FormLogin() {
     }).then((t) => t.json());
 
       const decoded = jwt.decode(res.token);
-
+      localStorage.setItem('user', JSON.stringify(decoded));
+    
+      window.location.reload();
   }
 
   return (
