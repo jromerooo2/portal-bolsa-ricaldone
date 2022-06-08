@@ -7,8 +7,6 @@ function Home() {
 
   return (
     <Layout user={user} loading={loading}>
-      <h1 className='font-bold text-2xl'>Bolsa de Trabajos del Ricaldone</h1>
-
       {loading && <p>Loading login info...</p>}
 
       {!loading && !user && (
