@@ -6,4 +6,7 @@
     h1 {
       @apply font-poppins font-bold text-2xl;
     }
+    .nested-camp{
+      @apply font-poppins text-green-600;
+    }
   }

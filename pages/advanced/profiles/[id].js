@@ -77,9 +77,21 @@ function Details({ user, profile}) {
                 <div className="md:flex items-center space-x-7">
                     <img src={profile.img} alt={profile.name} className="rounded h-64 mx-auto" />
                     <div className="space-y-5">
-                        <h1 className="font-bold text-3xl">{profile.namePostulant +" " +profile.lastName}</h1>
-                        <h1 className="text-xl"> <b>Número de Teléfono:</b><br></br> {profile.phoneNumber}</h1>
-                        <h1 className="text-xl"> <b>Correo Electrónico:</b><br></br> {profile.emailAddress}</h1>
+                            <h1 className="font-bold text-3xl">{profile.namePostulant +" " +profile.lastName}</h1>
+                            <h1 className="text-xl"> 
+                                <b>Trabajo de Interés:</b>
+                                <br></br> 
+                                <span className="nested-camp">
+                                    {profile.workSubjects.WorkSubject}
+                                </span>
+                            </h1>
+                            <h1 className="text-xl"> 
+                                <b>Contrato de Interés:</b>
+                                <br></br>
+                                <span className="nested-camp">
+                                    {profile.ContractType_ContractTypeToPostulants.WType}
+                                </span>
+                            </h1>
                         <p className="text-xl">Para conectar con el personal mostrado, haz click en el botón de abajo.</p>
                         <button onClick={request} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Contactar</button>
                         
