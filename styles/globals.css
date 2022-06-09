@@ -12,4 +12,17 @@
     .nested-container{
       @apply bg-green-100 md:m-3 my-3 border-green-400 rounded-full px-4 py-3 text-center;
     }
+
+    .header{
+      @apply mb-12 text-center;
+    }
+
+    h2{
+      @apply font-poppins;
+    }
+
+    p{
+      @apply font-poppins text-justify;
+    }
+
   }
