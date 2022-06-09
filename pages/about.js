@@ -16,7 +16,7 @@ function About() {
             <div className=''>
               <h1 className=''>Sacculum</h1>
               <br></br>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+              <p className='PText'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                 industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
                 scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
                 into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
@@ -24,7 +24,7 @@ function About() {
                 like Aldus PageMaker including versions of Lorem Ipsum.
               </p>
               <br></br>
-              <p>Contrary to popular belief, Lorem Ipsum is not simply random text. 
+              <p className='PText'>Contrary to popular belief, Lorem Ipsum is not simply random text. 
                 It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. 
                 Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the 
                 more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical 
@@ -36,27 +36,29 @@ function About() {
           </div>
         </main>
         <footer className='bg-stone-700 mt-5 rounded-t-lg'>
+          <h2 className='text-white pt-3 pl-3 HText2'>CONTACTANOS</h2>
           <div className='flex justify-around'>
-            <div>
-              <h2 className='text-white pt-3'>CONTACTANOS</h2>
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="56" height="56" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <rect x="3" y="5" width="18" height="14" rx="2" />
-                <polyline points="3 7 12 13 21 7" />
-              </svg>
-              <h3 className='text-white'>
+            <div> 
+              <center>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <polyline points="3 7 12 13 21 7" />
+                </svg>
+              </center>             
+              <h3 className='text-white HText3'>
                 bolsa_trabajo@gmail.com
               </h3>
             </div>
             <div>
-              <h2 className='text-white pt-3'>CONTACTANOS</h2>
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="56" height="56" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <rect x="3" y="5" width="18" height="14" rx="2" />
-                <polyline points="3 7 12 13 21 7" />
-              </svg>
-              <h3 className='text-white'>
-                bolsa_trabajo@gmail.com
+              <center>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+                </svg>
+              </center>
+              <h3 className='text-white HText3'>
+                +(503) 7954-2302
               </h3>
             </div>
           </div>   

@@ -17,11 +17,15 @@
       @apply mb-12 text-center;
     }
 
-    h2{
+    .HText2{
+      @apply font-poppins font-semibold;
+    }
+
+    .HText3{
       @apply font-poppins;
     }
 
-    p{
+    .PText{
       @apply font-poppins text-justify;
     }
 
