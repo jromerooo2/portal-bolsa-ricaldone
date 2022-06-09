@@ -8,14 +8,9 @@ export default function middleware(req) {
     clonedurl.pathname = '/login'
     const url = req.url;
 
-
-    // if (!jwt || jwt === undefined) {
-    //     return NextResponse.rewrite(url);
-    // }
-
     if (url.includes("advanced")){
         try {
-            verify(jwt, process.env.JWT_SECRET);
+            verify(jwt, process.env.SECRET);
             return NextResponse.next();
         }catch(err){
             return NextResponse.rewrite(clonedurl);

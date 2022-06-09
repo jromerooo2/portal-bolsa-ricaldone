@@ -13,7 +13,7 @@ function Layout({children}) {
 
       </Head>
 
-      <Header/>
+      <Header />
 
       <main className='p-4'>
         <div >{children}</div>

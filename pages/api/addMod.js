@@ -12,7 +12,6 @@ export default async (req, res) => {
     });
     res.status(200).json(result);
   } catch (err) {
-    console.log(err);
     res.status(403).json({ err: "Error occured while adding a new food." });
   }
 };

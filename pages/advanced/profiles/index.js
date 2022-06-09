@@ -2,19 +2,19 @@ import Layout from "../../../components/layout"
 import Link from "next/link";
 import { PrismaClient } from "@prisma/client"
 import axios from "axios";
+import { useEffect,useState } from "react/cjs/react.production.min";
 const prisma = new PrismaClient();
 
 
-function profiles({contratista, profiles}){
+function profiles({profiles}){
     const dataUsers = JSON.parse(profiles);
-    const user = JSON.parse(contratista);
-    console.log(user)
+    const usuario = false;
     return (
         <>
-            <Layout user={user}>
+            <Layout user={usuario}>
                 <h1 className="font-bold text-3xl p-8 text-center">Perfiles Disponibles</h1>
                 <p className="text-center">
-                    Bienvenido {user.nameUser}, aquí encontraras todos los perfiles disponibles para contratos. 
+                    Bienvenido {usuario.nameUser}, aquí encontraras todos los perfiles disponibles para contratos. 
                 </p>
                 <div className="md:grid grid-cols-3">
                     {
@@ -42,17 +42,13 @@ function profiles({contratista, profiles}){
     )
 }
 export async function getServerSideProps({ req, res }) {
-    //querying user from jwtapi
-    const contratista = await axios.get("http://localhost:3000/api/me");
-    
-    const contratistaJSON = JSON.stringify(contratista.data.decoded.responseBd);
 
     //Logic for db querying
     const profiles = await prisma.Postulants.findMany();
     const jsonProfiles = JSON.stringify(profiles);
-    return { props: {
-                    contratista:contratistaJSON,                    
+    return { props: {                    
                     profiles: jsonProfiles
-                } }
+                    } 
+           }
 }
 export default profiles

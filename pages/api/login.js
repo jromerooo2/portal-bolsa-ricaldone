@@ -6,10 +6,7 @@ import { serialize } from 'cookie';
 
 const prisma = new PrismaClient();
 export default async function login(req, res) {
-  if(!req.body){
-    res.status(400).send('No data received')
-    return
-  }
+
   const { username, password } = req.body;
 
   let responseBd = await prisma.userSystems.findFirst({
@@ -28,12 +25,13 @@ export default async function login(req, res) {
       }
     }
   }) 
-  console.log(responseBd)
+
   if(responseBd !== null){
 
     const token = jwt.sign({
-      responseBd
-    },process.env.JWT_SECRET)
+      responseBd,
+      exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 30, // 30 days
+    },process.env.SECRET)
 
     const serialised = serialize("SacculumJWT", token, {
       httpOnly: true,

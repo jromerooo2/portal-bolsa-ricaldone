@@ -5,13 +5,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import getPostulant from "../../../lib/getPostulant";
 import axios from "axios";
 
-function Details({ user, profile}) {
-    
+
+function Details({usuario,profile}) {  
+    console.log(usuario);
     let randomProfiles = [];
     profile = JSON.parse(profile);
-    user = JSON.parse(user);
-    console.log(user)
     const result = async () => {
+        const data = await axios.get('/api/me');
+        const user = data.data.data.responseBd;
+
         return await axios.post("/api/addMod", {
             idPostulant: profile.idPostulant,
             dateMod: new Date(),
@@ -25,8 +27,7 @@ function Details({ user, profile}) {
 
     //pickeando perfiles randoms con mismas caracteristicas
     const request = async () => {
-        const res = await result();
-        
+        const res = await result();        
         if(res.status === 200){
             toast.success("Se ha solicitado correctamente la Información de " + profile.namePostulant + " " + profile.lastName + ".", {
                 position: "bottom-center",
@@ -52,20 +53,8 @@ function Details({ user, profile}) {
         }
         
     }
-
-    // do {
-    //     let rand = Math.floor(Math.random() * allProfiles.length);
-    //     if(randomProfiles.indexOf(allProfiles[rand]) === -1 && 
-    //        allProfiles[rand].userId !== profile.userId) {
-
-    //         randomProfiles.push(allProfiles[rand]);
-
-    //     }         
-    // } while (randomProfiles.length < 4);
-
-
     return (
-        <Layout user={user}>
+        <Layout>
             <Link href='/advanced/profiles/' >
                 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-left cursor-pointer" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -187,9 +176,7 @@ function Details({ user, profile}) {
 
 
 export async function getServerSideProps({ params,req, res }) {    
-    const contratista = await axios.get("http://localhost:3000/api/me");
-    
-    const contratistaJSON = JSON.stringify(contratista.data.decoded.responseBd);
+  
     //Logic to get multiple curriculum profiles to render later #SSR😎 
     const { id } = params;
 
@@ -199,8 +186,7 @@ export async function getServerSideProps({ params,req, res }) {
 
 
     return { props:  {
-                                 user: contratistaJSON,
-                                 profile:jsonProfile                    
+                        profile:jsonProfile                    
                     } 
             }
 }
