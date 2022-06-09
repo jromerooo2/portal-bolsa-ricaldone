@@ -7,6 +7,9 @@
       @apply font-poppins font-bold text-2xl;
     }
     .nested-camp{
-      @apply font-poppins text-green-600;
+      @apply font-poppins text-green-600 font-semibold;
+    }
+    .nested-container{
+      @apply bg-green-100 md:m-3 my-3 border-green-400 rounded-full px-4 py-3 text-center;
     }
   }

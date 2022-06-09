@@ -76,30 +76,84 @@ function Details({ user, profile}) {
             </Link>
             <div className="flex items-center justify-center">
                 <div className="md:flex items-center space-x-7">
-                    <img src={profile.img} alt={profile.name} className="rounded h-64 mx-auto" />
+                    <img src="https://scontent-ort2-2.xx.fbcdn.net/v/t1.6435-9/138641678_710761912912207_3140463209643283182_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=6snThkQGTCwAX-grUyL&_nc_ht=scontent-ort2-2.xx&oh=00_AT8NUuY_uRIIFjPZqV70-vmkPFYQDVDVk_yo1m2YEt5qvg&oe=62C53940" alt={profile.name} className="rounded md:h-96 mx-auto" />
                     <div className="space-y-5">
-                            <h1 className="font-bold text-3xl">{profile.namePostulant +" " +profile.lastName}</h1>
-                            <h1 className="text-xl"> 
-                                <b>Trabajo de Interés:</b>
-                                <br></br> 
+                        <h1 className="font-bold text-3xl">{profile.namePostulant +" " +profile.lastName}</h1>
+                        <div className="md:grid grid-cols-3 block mr-[1rem] md:mx-0 ">
+                            <div className="nested-container">
+                                <h1 className="text-xl"> 
+                                    <b>Area de Interés:</b>                                                                         
+                                </h1>
                                 <span className="nested-camp">
-                                    {profile.workSubjects.WorkSubject}
+                                        {profile.workSubjects.WorkSubject}
                                 </span>
-                            </h1>
-                            <h1 className="text-xl"> 
-                                <b>Contrato de Interés:</b>
-                                <br></br>
+                            </div>
+                            <div className="nested-container">
+                                <h1 className="text-xl"> 
+                                    <b>Tipo de Contrato:</b>                                
+                                </h1>                            
                                 <span className="nested-camp">
-                                    {profile.ContractType_ContractTypeToPostulants.WType}
+                                        {profile.ContractType_ContractTypeToPostulants.WType}
                                 </span>
-                            </h1>
-                        <p className="text-xl">Para conectar con el personal mostrado, haz click en el botón de abajo.</p>
-                        <button onClick={request} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Contactar</button>
+                            </div>
+                            <div className="nested-container">
+                                <h1 className="text-xl"> 
+                                    <b>Estudios Básicos:</b>                                
+                                </h1>                            
+                                <span className="nested-camp">
+                                        {profile.HighType_HighTypeToPostulants.HighType}
+                                </span>
+                            </div>
+                            <div className="nested-container">
+                                <h1 className="text-xl"> 
+                                    <b>Expectativa Salarial:</b>                                
+                                </h1>                            
+                                <span className="nested-camp">
+                                        {profile.SalaryState.Salary}
+                                </span>
+                            </div>
+                            <div className="nested-container">
+                                <h1 className="text-xl"> 
+                                    <b>Estudios Avanzados:</b>                                
+                                </h1>                            
+                                <span className="nested-camp">
+                                        {profile.UniversityStates.StateU}
+                                </span>
+                            </div>
+                            <div className="nested-container">
+                                <h1 className="text-xl"> 
+                                    <b>Trabajo Deseado:</b>                                
+                                </h1>                            
+                                <span className="nested-camp">
+                                        {profile.WorkPreference_PostulantsToWorkPreference.WPreference}
+                                </span>
+                            </div>
+                            <div className="nested-container">
+                                <h1 className="text-xl"> 
+                                    <b>Situación :</b>                                
+                                </h1>                            
+                                <span className="nested-camp">
+                                        {profile.WorkState.WorkState}
+                                </span>
+                            </div>
+                            <div className="nested-container">
+                                <h1 className="text-xl"> 
+                                    <b>Ubicación :</b>                                
+                                </h1>                            
+                                <span className="nested-camp">
+                                        {profile.Departments_DepartmentsToPostulants_RDepartment.Department}
+                                </span>
+                            </div>
+                        
+                        </div>
+                        <p className="text-xl">{`Para solicitar información de ${profile.namePostulant +" "+ profile.lastName}, haz click en el botón de abajo`}</p>
+                        <button onClick={request} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mx-auto block">Solicitar Información</button>
                         
                         <ToastContainer>
                         </ToastContainer>
                     </div>
                 </div>
+                
             </div>
             <div className="">
                 <h1 className="font-bold text-3xl p-8 text-center">Perfiles Recomendados</h1>
