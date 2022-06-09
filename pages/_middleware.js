@@ -8,11 +8,26 @@ export default function middleware(req) {
     clonedurl.pathname = '/login'
     const url = req.url;
 
-    if (url.includes("advanced")){
-        try {
-            verify(jwt, process.env.SECRET);
+    if(url.includes('/login')){
+        if(jwt){
+            try{
+                verify(jwt, process.env.JWT_SECRET);
+                return NextResponse.redirect('/');
+            }catch(e){
+                return NextResponse.rewrite(new URL('/', req.url))
+            }
+        }
+    }
+
+    if(url.includes("advanced")){
+        if (jwt === undefined) {
+            return NextResponse.rewrite(clonedurl);
+        }
+
+        try{
+            verify(jwt, process.env.JWT_SECRET);
             return NextResponse.next();
-        }catch(err){
+        }catch(e){
             return NextResponse.rewrite(clonedurl);
         }
     }

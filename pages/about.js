@@ -1,11 +1,7 @@
 import Layout from '../components/layout'
 
 function About() {
-  let user = "";
-
-  if (typeof window !== "undefined") {
-    user = localStorage.getItem("user");
-  }
+  let user = false;
   return (
     <Layout user={user}>
       <h1>Sobre Nosotros</h1>

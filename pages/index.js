@@ -1,16 +1,9 @@
 import Layout from '../components/layout'
-import FormLogin from '../components/FormLogin'
 
 function Home() {
-  const user = false;
   return (
-    <Layout>
+    <Layout >
 
-      {/* {!user && (
-        <>
-          <FormLogin />
-        </>
-      )} */}
     </Layout>
   )
 }

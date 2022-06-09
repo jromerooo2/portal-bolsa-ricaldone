@@ -1,7 +1,15 @@
 import Link from 'next/link'
+import axios from 'axios';
 
 function Header() {
-  const user = false;
+  const user = true;
+  console.log(user);
+
+  const handleLogout = async () => {
+    const logout = await axios.get("/api/logout");
+    window.location.href = "/";
+    console.log(logout);
+  }
   return (
     <header>
       <nav className="font-bold">        
@@ -11,19 +19,12 @@ function Header() {
               <a>Home</a>
             </Link>
           </li>
-            {
-              (user ? (
-                  <>
                     <li>
                       <Link href="/advanced/profiles">
                         <a>Perfiles</a>
                       </Link>
                     </li>
-                  </>
-                ):(
-                  <>
-                  </>
-            ))}
+
           <li>
             <Link href="/about">
               <a>Sobre Nosotros</a>
@@ -35,7 +36,7 @@ function Header() {
               
               <>
                 <li>
-                  <a className='cursor-pointer' onClick={handleLogout}>Cerrar Sesión</a>
+                  <a className='cursor-pointer' onClick={() => handleLogout()} >Cerrar Sesión</a>
                 </li>
               </>
             ) : (
