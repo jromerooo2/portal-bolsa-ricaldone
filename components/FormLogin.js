@@ -14,7 +14,6 @@ export default function FormLogin() {
     const res = await axios.post('/api/login',credentials)
     if(res.status === 200){
       router.push('/advanced/profiles')
-      setUser(username)
     }
 
   }

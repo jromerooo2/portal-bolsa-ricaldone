@@ -1,8 +1,6 @@
 import Layout from "../../../components/layout"
 import Link from "next/link";
 import { PrismaClient } from "@prisma/client"
-import axios from "axios";
-import { useEffect,useState } from "react/cjs/react.production.min";
 const prisma = new PrismaClient();
 
 

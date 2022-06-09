@@ -11,7 +11,7 @@ export default function middleware(req) {
     if(url.includes('/login')){
         if(jwt){
             try{
-                verify(jwt, process.env.JWT_SECRET);
+                verify(jwt, process.env.SECRET);
                 return NextResponse.redirect('/');
             }catch(e){
                 return NextResponse.rewrite(new URL('/', req.url))
@@ -23,9 +23,8 @@ export default function middleware(req) {
         if (jwt === undefined) {
             return NextResponse.rewrite(clonedurl);
         }
-
         try{
-            verify(jwt, process.env.JWT_SECRET);
+            verify(jwt, process.env.SECRET);
             return NextResponse.next();
         }catch(e){
             return NextResponse.rewrite(clonedurl);
