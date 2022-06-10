@@ -5,11 +5,11 @@ function About() {
   return (
     <Layout user={user} >
       <div className=''>
-        <header className='header bg-'>
-          <h1>SOBRE NOSOTROS</h1>
+        <header className='header '>
+          <h1 className=''>SOBRE NOSOTROS</h1>
         </header>
         <main className='p-0 m-0'>
-          <div className="grid grid-cols-2 gap-10 mr-10">
+          <div className="grid md:grid-cols-2 gap-10 mr-10 ">
             <div>
               <img src='https://scontent-ort2-2.xx.fbcdn.net/v/t1.6435-9/138641678_710761912912207_3140463209643283182_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=6snThkQGTCwAX-grUyL&_nc_ht=scontent-ort2-2.xx&oh=00_AT8NUuY_uRIIFjPZqV70-vmkPFYQDVDVk_yo1m2YEt5qvg&oe=62C53940 ' className="rounded-lg md:h- mx-auto w-full"></img>
             </div>
@@ -35,10 +35,10 @@ function About() {
             </div>
           </div>
         </main>
-        <footer className='bg-stone-700 mt-5 rounded-t-lg'>
+        <footer className='bg-stone-700 mt-5 rounded-lg'>
           <h2 className='text-white pt-3 pl-3 HText2'>CONTACTANOS</h2>
-          <div className='flex justify-around'>
-            <div> 
+          <div className='md:flex justify-around'>
+            <div className='p-4 text-center'> 
               <center>
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -50,7 +50,7 @@ function About() {
                 bolsa_trabajo@gmail.com
               </h3>
             </div>
-            <div>
+            <div className='text-center p-4'>
               <center>
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
