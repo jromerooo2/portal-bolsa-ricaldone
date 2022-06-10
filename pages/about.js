@@ -108,7 +108,7 @@ function About() {
                 >
                   <li>
                     <center>
-                      <a class="text-gray-700 transition hover:text-gray-700/75" href="/">
+                      <a class="text-gray-700 transition hover:text-gray-700/75 Font" href="/">
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9e9e9e" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -120,7 +120,7 @@ function About() {
                   </li>
                   <li>
                     <center>
-                      <a class="text-gray-700 transition hover:text-gray-700/75" href="http://localhost:3000/advanced/profiles">
+                      <a class="text-gray-700 transition hover:text-gray-700/75 Font" href="http://localhost:3000/advanced/profiles">
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9e9e9e" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <circle cx="12" cy="7" r="4" />
@@ -132,7 +132,7 @@ function About() {
                   </li>
                   <li>
                     <center>
-                      <a class="text-gray-700 transition hover:text-gray-700/75" href="/">
+                      <a class="text-gray-700 transition hover:text-gray-700/75 Font" href="/">
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9e9e9e" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />

@@ -28,5 +28,9 @@
     .PText{
       @apply font-poppins text-justify;
     }
+
+    .Font{
+      @apply font-poppins;
+    }
   
   }
