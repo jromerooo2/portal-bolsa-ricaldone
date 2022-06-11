@@ -13,13 +13,13 @@ function Details({usuario,profile}) {
     const result = async () => {
         const data = await axios.get('/api/me');
         const user = data.data.data.responseBd;
-
         return await axios.post("/api/addMod", {
             idPostulant: profile.idPostulant,
             dateMod: new Date(),
             context: user.mailUser,
             request: user.nameUser,
             requestedInfo: "Informacion solicitada del postulante: "+profile.namePostulant+" "+profile.lastName,
+            idUserSystem: user.idUser,
         })
         
 }

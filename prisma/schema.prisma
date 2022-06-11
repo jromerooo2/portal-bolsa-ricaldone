@@ -8,7 +8,7 @@ datasource db {
 }
 
 model AditionalSkills {
-  idAskills   Int         @id(map: "PK__Aditiona__88B395ABEBD07F09") @default(autoincrement())
+  idAskills   Int         @id(map: "PK__Aditiona__88B395AB923B2F21") @default(autoincrement())
   NameSkill   String?     @db.VarChar(50)
   idLevel     Int?
   idPostulant Int?
@@ -17,7 +17,7 @@ model AditionalSkills {
 }
 
 model Branches {
-  idBranch    Int         @id(map: "PK__Branches__A33E4FC45D3F9311") @default(autoincrement())
+  idBranch    Int         @id(map: "PK__Branches__A33E4FC4636BB94D") @default(autoincrement())
   Branch      String?     @db.VarChar(50)
   idLevel     Int?
   idPostulant Int?
@@ -26,21 +26,21 @@ model Branches {
 }
 
 model Departments {
-  idDepartment                                   Int          @id(map: "PK__Departme__FE2F9795443A79B3") @default(autoincrement())
+  idDepartment                                   Int          @id(map: "PK__Departme__FE2F97958A476598") @default(autoincrement())
   Department                                     String?      @db.VarChar(80)
   Postulants_DepartmentsToPostulants_IDepartment Postulants[] @relation("DepartmentsToPostulants_IDepartment")
   Postulants_DepartmentsToPostulants_RDepartment Postulants[] @relation("DepartmentsToPostulants_RDepartment")
 }
 
 model Genders {
-  idGender    Int           @id(map: "PK__Genders__85D2078056224426") @default(autoincrement())
+  idGender    Int           @id(map: "PK__Genders__85D207800032B7E5") @default(autoincrement())
   Gender      String?       @db.VarChar(14)
   Postulants  Postulants[]
   UserSystems UserSystems[]
 }
 
 model GeneralSkills {
-  idGskill    Int         @id(map: "PK__GeneralS__1783224D04B6D529") @default(autoincrement())
+  idGskill    Int         @id(map: "PK__GeneralS__1783224DC9B33D9D") @default(autoincrement())
   Skill       String?     @db.VarChar(Max)
   idLevel     Int?
   idPostulant Int?
@@ -49,7 +49,7 @@ model GeneralSkills {
 }
 
 model Levels {
-  idLevel         Int               @id(map: "PK__Levels__995F5B34DD44A5FE") @default(autoincrement())
+  idLevel         Int               @id(map: "PK__Levels__995F5B34659C95E3") @default(autoincrement())
   Levels          String?           @db.VarChar(30)
   AditionalSkills AditionalSkills[]
   Branches        Branches[]
@@ -57,21 +57,23 @@ model Levels {
 }
 
 model Moderations {
-  idMod         Int         @id(map: "PK__Moderati__3DC69A5D70F30911") @default(autoincrement())
+  idMod         Int          @id(map: "PK__Moderati__3DC69A5D4DBEF1D2") @default(autoincrement())
   idPostulant   Int?
-  dateMod       DateTime?   @db.Date
-  context       String?     @db.VarChar(200)
-  request       String?     @db.VarChar(100)
-  requestedInfo String?     @db.VarChar(100)
-  Postulants    Postulants? @relation(fields: [idPostulant], references: [idPostulant], onDelete: NoAction, onUpdate: NoAction, map: "fk_ModerationsPostulants")
+  dateMod       DateTime?    @db.Date
+  context       String?      @db.VarChar(200)
+  request       String?      @db.VarChar(100)
+  requestedInfo String?      @db.VarChar(100)
+  idUserSystem  Int?
+  Postulants    Postulants?  @relation(fields: [idPostulant], references: [idPostulant], onDelete: NoAction, onUpdate: NoAction, map: "fk_ModerationsPostulants")
+  UserSystems   UserSystems? @relation(fields: [idUserSystem], references: [idUser], onDelete: NoAction, onUpdate: NoAction, map: "fk_ModerationUserSystem")
 }
 
 model Postulants {
-  idPostulant                                     Int               @id(map: "PK__Postulan__35484EE834A5C6D1") @default(autoincrement())
+  idPostulant                                     Int               @id(map: "PK__Postulan__35484EE8071B478E") @default(autoincrement())
   namePostulant                                   String?           @db.VarChar(30)
   mailPostulant                                   String?           @db.VarChar(45)
   Pword                                           String?           @db.VarChar(10)
-  photoPostulant                                  Bytes?            @db.Image
+  photoPostulant                                  Bytes?
   resumePDF                                       Bytes?            @db.VarBinary(1)
   resumeDetails                                   String?           @db.VarChar(Max)
   mailverification                                Boolean?
@@ -109,82 +111,83 @@ model Postulants {
 }
 
 model Progress {
-  idProgress Int          @id(map: "PK__Progress__499DE999A276A73F") @default(autoincrement())
+  idProgress Int          @id(map: "PK__Progress__499DE9991BAE10A5") @default(autoincrement())
   Progress   String?      @db.VarChar(30)
   Postulants Postulants[]
 }
 
 model Rols {
-  idRol       Int           @id(map: "PK__Rols__3C872F7672EE7941") @default(autoincrement())
+  idRol       Int           @id(map: "PK__Rols__3C872F76155704D0") @default(autoincrement())
   Rol         String?       @db.VarChar(30)
   UserSystems UserSystems[]
 }
 
 model States {
-  idState     Int           @id(map: "PK__States__98CB3723751581C3") @default(autoincrement())
+  idState     Int           @id(map: "PK__States__98CB3723905CCBF6") @default(autoincrement())
   States      String?       @db.VarChar(30)
   UserSystems UserSystems[]
 }
 
 model UserSystems {
-  idUser           Int      @id(map: "PK__UserSyst__3717C98218E329D9") @default(autoincrement())
+  idUser           Int           @id(map: "PK__UserSyst__3717C982BCEDF3D1") @default(autoincrement())
   idState          Int?
-  nameUser         String?  @db.VarChar(30)
-  Pword            String?  @db.VarChar(250)
-  mailUser         String?  @db.VarChar(45)
-  numberUser       Decimal? @db.Decimal(8, 0)
+  nameUser         String?       @db.VarChar(30)
+  Pword            String?       @db.VarChar(250)
+  mailUser         String?       @db.VarChar(45)
+  numberUser       Decimal?      @db.Decimal(8, 0)
   idRol            Int?
   mailverification Boolean?
   idGender         Int?
-  Genders          Genders? @relation(fields: [idGender], references: [idGender], onDelete: NoAction, onUpdate: NoAction, map: "fk_uSystemGender")
-  Rols             Rols?    @relation(fields: [idRol], references: [idRol], onDelete: NoAction, onUpdate: NoAction, map: "fk_uSystemRol")
-  States           States?  @relation(fields: [idState], references: [idState], onDelete: NoAction, onUpdate: NoAction, map: "fk_uSystemState")
+  Genders          Genders?      @relation(fields: [idGender], references: [idGender], onDelete: NoAction, onUpdate: NoAction, map: "fk_uSystemGender")
+  Rols             Rols?         @relation(fields: [idRol], references: [idRol], onDelete: NoAction, onUpdate: NoAction, map: "fk_uSystemRol")
+  States           States?       @relation(fields: [idState], references: [idState], onDelete: NoAction, onUpdate: NoAction, map: "fk_uSystemState")
+  Moderations      Moderations[]
 }
 
 model workSubjects {
-  idSubject   Int          @id(map: "PK__workSubj__A324CF9E52A2FBB2") @default(autoincrement())
+  idSubject   Int          @id(map: "PK__workSubj__A324CF9E135551BA") @default(autoincrement())
   WorkSubject String?      @db.VarChar(100)
   Postulants  Postulants[]
 }
 
 model ContractType {
-  idContractT Int          @id(map: "PK__Contract__EB98699F6BE5D13C") @default(autoincrement())
+  idContractT Int          @id(map: "PK__Contract__EB98699F1901B1B7") @default(autoincrement())
   WType       String?      @db.VarChar(50)
   Postulants  Postulants[]
 }
 
 model HighType {
-  idType     Int          @id(map: "PK__HighType__4BB98BC63EA16C16") @default(autoincrement())
+  idType     Int          @id(map: "PK__HighType__4BB98BC6677E5B8C") @default(autoincrement())
   HighType   String?      @db.VarChar(50)
   Postulants Postulants[]
 }
 
 model SalaryState {
-  idSalary   Int          @id(map: "PK__SalarySt__BDC60297B3FE4DF4") @default(autoincrement())
+  idSalary   Int          @id(map: "PK__SalarySt__BDC60297BF2D6BD6") @default(autoincrement())
   Salary     String?      @db.VarChar(50)
   Postulants Postulants[]
 }
 
 model StudyLevels {
-  idSLevel   Int          @id(map: "PK__StudyLev__92F4D6340F08F9F6") @default(autoincrement())
+  idSLevel   Int          @id(map: "PK__StudyLev__92F4D634CA435491") @default(autoincrement())
   studyLevel String?      @db.VarChar(50)
   Postulants Postulants[]
 }
 
 model UniversityStates {
-  idUState   Int          @id(map: "PK__Universi__02C48A0075C7E321") @default(autoincrement())
+  idUState   Int          @id(map: "PK__Universi__02C48A00F1BFBF7B") @default(autoincrement())
   StateU     String?      @db.VarChar(50)
   Postulants Postulants[]
 }
 
 model WorkPreference {
-  idPreference Int          @id(map: "PK__WorkPref__DA6659E3F992AE07") @default(autoincrement())
+  idPreference Int          @id(map: "PK__WorkPref__DA6659E34D0154AC") @default(autoincrement())
   WPreference  String?      @db.VarChar(50)
   Postulants   Postulants[]
 }
 
 model WorkState {
-  idWorkSatet Int          @id(map: "PK__WorkStat__F4CA258E04E8003E") @default(autoincrement())
+  idWorkSatet Int          @id(map: "PK__WorkStat__F4CA258EF7B5ADE5") @default(autoincrement())
   WorkState   String?      @db.VarChar(50)
   Postulants  Postulants[]
 }

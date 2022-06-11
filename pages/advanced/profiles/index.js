@@ -10,20 +10,20 @@ function profiles({profiles}){
     return (
         <>
             <Layout user={usuario}>
-                <h1 className="font-bold text-3xl p-8 text-center">Perfiles Disponibles</h1>
+                <h1 className="p-8 text-3xl font-bold text-center">Perfiles Disponibles</h1>
                 <p className="text-center">
                     Bienvenido {usuario.nameUser}, aquí encontraras todos los perfiles disponibles para contratos. 
                 </p>
-                <div className="md:grid grid-cols-3">
+                <div className="grid-cols-3 md:grid">
                     {
                         dataUsers.map(user => (
                             <div key={user.idPostulant}>
                                 <Link href={'/advanced/profiles/'+user.idPostulant} >
-                                    <div key={user.userId} className="p-2 md:my-9 my-6 card cursor-pointer">
+                                    <div key={user.userId} className="p-2 my-6 cursor-pointer md:my-9 card">
                                         <div className={`bg-white rounded-lg shadow-xl p-4 ${user.Alumni ? "border border-yellow-500":""}`}>
                                             <span className={`rounded p-2 bg-red-500 text-white absolute -mt-8 ${user.Alumni ? "":"hidden"}`}>Recomendado</span>
-                                            <img src={user.img} alt={user.namePostulant} className="rounded h-36 mx-auto" />
-                                            <h2 className="font-bold text-xl">{user.namePostulant +" "+ user.lastName}</h2>
+                                            <img src={user.img} alt={user.namePostulant} className="mx-auto rounded h-36" />
+                                            <h2 className="text-xl font-bold">{user.namePostulant +" "+ user.lastName}</h2>
                                             <p>{user.email}</p>
                                             <p>{user.phoneNumber}</p>
                                             <p>{user.emailAddress}</p>
