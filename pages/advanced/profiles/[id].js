@@ -56,7 +56,7 @@ function Details({usuario,profile}) {
     return (
         <Layout>
             <Link href='/advanced/profiles/' >
-                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-left cursor-pointer" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" className="cursor-pointer icon icon-tabler icon-tabler-arrow-left" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <line x1="5" y1="12" x2="11" y2="18" />
@@ -64,10 +64,10 @@ function Details({usuario,profile}) {
                 </svg>
             </Link>
             <div className="flex items-center justify-center">
-                <div className="md:flex items-center space-x-7">
-                    <img src="https://scontent-ort2-2.xx.fbcdn.net/v/t1.6435-9/138641678_710761912912207_3140463209643283182_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=6snThkQGTCwAX-grUyL&_nc_ht=scontent-ort2-2.xx&oh=00_AT8NUuY_uRIIFjPZqV70-vmkPFYQDVDVk_yo1m2YEt5qvg&oe=62C53940" alt={profile.name} className="rounded md:h-96 mx-auto" />
+                <div className="items-center md:flex space-x-7">
+                    <img src="https://scontent-ort2-2.xx.fbcdn.net/v/t1.6435-9/138641678_710761912912207_3140463209643283182_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=6snThkQGTCwAX-grUyL&_nc_ht=scontent-ort2-2.xx&oh=00_AT8NUuY_uRIIFjPZqV70-vmkPFYQDVDVk_yo1m2YEt5qvg&oe=62C53940" alt={profile.name} className="mx-auto rounded md:h-96" />
                     <div className="space-y-5">
-                        <h1 className="font-bold text-3xl">{profile.namePostulant +" " +profile.lastName}</h1>
+                        <h1 className="text-3xl font-bold">{profile.namePostulant +" " +profile.lastName}</h1>
                         <div className="md:grid grid-cols-3 block mr-[1rem] md:mx-0 ">
                             <div className="nested-container">
                                 <h1 className="text-xl"> 
@@ -135,8 +135,8 @@ function Details({usuario,profile}) {
                             </div>
                         
                         </div>
-                        <p className="text-xl">{`Para solicitar información de ${profile.namePostulant +" "+ profile.lastName}, haz click en el botón de abajo`}</p>
-                        <button onClick={request} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mx-auto block">Solicitar Información</button>
+                        <p className="text-xl text-center">{`Para solicitar información de ${profile.namePostulant +" "+ profile.lastName}, haz click en el botón de abajo`}</p>
+                        <button onClick={request} className="block px-4 py-2 mx-auto font-bold text-white bg-green-500 rounded hover:bg-green-700">Solicitar Información</button>
                         
                         <ToastContainer>
                         </ToastContainer>
@@ -145,20 +145,20 @@ function Details({usuario,profile}) {
                 
             </div>
             <div className="">
-                <h1 className="font-bold text-3xl p-8 text-center">Perfiles Recomendados</h1>
-                <div className="grid md:grid-cols-4 grid-cols-2 ">
+                <h1 className="p-8 text-3xl font-bold text-center">Perfiles Recomendados</h1>
+                <div className="grid grid-cols-2 md:grid-cols-4 ">
                     {
                         randomProfiles.map(
                             profile => (
                                     <div key={profile.userId}>
                                         <Link  href={'/advanced/profiles/'+profile.userId} >
-                                            <div  className="p-2 md:my-9 my-6 card cursor-pointer md:w-auto w-46">
+                                            <div  className="p-2 my-6 cursor-pointer md:my-9 card md:w-auto w-46">
                                                 <div className={`bg-white rounded-lg shadow-xl p-4 ${profile.exalumno ? "border border-yellow-500":""}`}>
                                                     <div className="flex items-center justify-center">
-                                                        <img src={profile.img} alt={profile.name} className="rounded md:h-64 mx-auto" />
+                                                        <img src={profile.img} alt={profile.name} className="mx-auto rounded md:h-64" />
                                                      </div>
                                                     <div className="space-y-5">
-                                                        <h1 className="font-bold text-3xl">{profile.namePostulant} <br></br> {profile.lastName}</h1>
+                                                        <h1 className="text-3xl font-bold">{profile.namePostulant} <br></br> {profile.lastName}</h1>
                                                         {/* <h1 className="text-xl"> <b>Número de Teléfono:</b><br></br> {profile.phoneNumber}</h1> */}
                                                         {/* <h1 className="text-xl"> <b>Correo Electrónico:</b><br></br> {profile.emailAddress}</h1> */}
                                                     </div>
