@@ -1,35 +1,59 @@
 import React from 'react'
 import Layout from './layout'
-
+import TimePicker from './TimePicker'
 
 export default function Story(props){
   let { storyData, user } = props;
   console.log(storyData);
+
   return (
     <Layout>
-        <h1 className='text-center'>
-            Hola, {user.nameUser},este es un listado de todos los perfiles que has solicitado
-        </h1>
-        <div className='grid-cols-3 space-x-5 md:grid'>
+      <div className="items-center grid-cols-2 mb-4 space-y-10 text-xl text-center text-gray-900 md:space-y-0 md:grid">
+        <div>
+          <h1 className='text-center'>
+              Hola, <span className='text-green-saculum'>
+                  {user.nameUser}.
+              </span>
+          </h1>
+          <p className='text-center font-poppins'>
+              Aquí podrás ver el historial de información que has solicitado.
+          </p>
+        </div>
+        <div className=''>
+          <div className='md:w-1/2 font-poppins'>
+            <TimePicker/>
+          </div>
+        </div>        
+
+      </div>
+
+        <div className='grid-cols-3 gap-3 mt-3 md:mt-9 md:grid'>
             {
                 storyData.map((story, index) => {
                     return (
                         <div className='' key={index}>
-                            <div className='px-8 pt-6 pb-8 mb-4 bg-green-200 rounded shadow-xl'>
+                            <div className='card-story'>
                                 <div className='flex items-center justify-between'>
                                     <div className='flex items-center'>
-                                        <img className='w-10 h-10 mr-4 rounded-full' src="https://media.discordapp.net/attachments/881990540860731402/984830320023064636/unknown.png" alt={story.Postulants.namePostulant + story.Postulants.lastName} />
+                                        <img className='w-16 h-16 mr-4 rounded-full' src="https://cdn.discordapp.com/attachments/820024965683216404/985296933931323422/unknown.png" alt={story.Postulants.namePostulant + story.Postulants.lastName} />
                                         <div className='text-sm'>
-                                            <h1 className='leading-none text-gray-900'>{story.Postulants.namePostulant} {story.Postulants.lastName}</h1>
+                                            <h1 className='leading-none '>{story.Postulants.namePostulant} {story.Postulants.lastName}</h1>
+                                            <p>{story.requestedInfo}</p>
+
                                         </div>
                                     </div>
                                     <div className='flex items-center'>
-                                        <p className='text-xs text-gray-600'>{story.dateMod}</p>
+                                        <p className='text-xs '>{
+                                                new Date(story.dateMod).toLocaleDateString('es-ES', {
+                                                    day: 'numeric',
+                                                    month: 'long',
+                                                    year: 'numeric'
+                                                })                                               
+                                                }
+                                        </p>
                                     </div>
                                 </div>
-                                <div className='text-base text-gray-800'>
-                                    <p>{story.requestedInfo}</p>
-                                </div>
+
                             </div>
                         </div>
                     )

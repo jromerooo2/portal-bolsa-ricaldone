@@ -8,6 +8,9 @@ module.exports = {
     extend: {
       fontFamily: {
         'poppins': ['"Poppins"', 'cursive']
+      },
+      colors: {
+        'green-saculum': '#395322',
       }
     },
   },

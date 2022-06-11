@@ -6,6 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.6.4",
+    "@heroicons/react": "^1.0.6",
     "@prisma/client": "^3.13.0",
     "autoprefixer": "^10.4.7",
     "axios": "^0.27.2",

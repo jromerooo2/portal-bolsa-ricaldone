@@ -4,13 +4,13 @@
 
 @layer components {
     h1 {
-      @apply font-poppins font-bold text-2xl;
+      @apply text-2xl font-bold font-poppins;
     }
     .nested-camp{
-      @apply font-poppins text-green-600 font-semibold;
+      @apply font-semibold text-green-600 font-poppins;
     }
     .nested-container{
-      @apply bg-green-100 md:m-3 my-3 border-green-400 rounded-full px-4 py-3 text-center;
+      @apply px-4 py-3 my-3 text-center bg-green-100 border-green-400 rounded-full md:m-3;
     }
 
     .header{
@@ -18,7 +18,7 @@
     }
 
     .HText2{
-      @apply font-poppins font-semibold;
+      @apply font-semibold font-poppins;
     }
 
     .HText3{
@@ -26,7 +26,10 @@
     }
 
     .PText{
-      @apply font-poppins text-justify;
+      @apply text-justify font-poppins;
+    }
+    .card-story{
+      @apply px-8 pt-6 pb-8 mb-4 bg-green-saculum shadow-xl rounded-xl text-white
     }
 
     .Font{
