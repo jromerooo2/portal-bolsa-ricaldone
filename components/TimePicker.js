@@ -30,7 +30,7 @@ export default function Example() {
         <>
           <Listbox.Label className="block text-xl font-bold text-green-saculum">Filtrar Por</Listbox.Label>
           <div className="relative mt-1">
-            <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white border border-gray-300 rounded-md shadow-sm cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white border border-gray-300 rounded-md shadow-sm cursor-default focus:outline-none focus:ring-1 focus:ring-green-saculum focus:border-green-saculum sm:text-sm">
               <span className="flex items-center">
                 <img src={selected.avatar} alt="" className="flex-shrink-0 w-6 h-6 rounded-full" />
                 <span className="block ml-3 truncate">{selected.name}</span>
@@ -53,7 +53,7 @@ export default function Example() {
                     key={person.id}
                     className={({ active }) =>
                       classNames(
-                        active ? 'text-white bg-indigo-600' : 'text-gray-900',
+                        active ? 'text-white bg-green-saculum' : 'text-gray-900',
                         'cursor-default select-none relative py-2 pl-3 pr-9'
                       )
                     }
@@ -73,7 +73,7 @@ export default function Example() {
                         {selected ? (
                           <span
                             className={classNames(
-                              active ? 'text-white' : 'text-indigo-600',
+                              active ? 'text-white' : 'bg-green-saculum',
                               'absolute inset-y-0 right-0 flex items-center pr-4'
                             )}
                           >
