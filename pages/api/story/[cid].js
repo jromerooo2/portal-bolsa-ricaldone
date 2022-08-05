@@ -8,6 +8,6 @@ export default async(req, res) => {
     console.log(result);
     res.status(200).json(result);
   } catch (err) {
-    res.status(403).json({ err: "Error occured while adding a new food." });
+    res.status(403).json({ err: "Error occured while retrieving your data." });
   }
 };

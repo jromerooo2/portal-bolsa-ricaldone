@@ -11,6 +11,8 @@ module.exports = {
       },
       colors: {
         'green-saculum': '#395322',
+        'green-saculum-light': '#85AF4B',
+        'green-saculum-lighter': '#D6EABE',
       }
     },
   },

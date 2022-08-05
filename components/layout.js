@@ -17,7 +17,7 @@ function Layout({user,children}) {
 
       <Header/>
 
-      <main className='p-4'>
+      <main>
         <div >{children}</div>
       </main>
 

@@ -36,7 +36,7 @@ export default function Example() {
                 <span className="block ml-3 truncate">{selected.name}</span>
               </span>
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 ml-3 pointer-events-none">
-                <SelectorIcon className="w-5 h-5 text-gray-400" aria-hidden="true" />
+                <SelectorIcon className="w-5 h-5 text-white" aria-hidden="true" />
               </span>
             </Listbox.Button>
 
@@ -73,11 +73,11 @@ export default function Example() {
                         {selected ? (
                           <span
                             className={classNames(
-                              active ? 'text-white' : 'bg-green-saculum',
-                              'absolute inset-y-0 right-0 flex items-center pr-4'
+                              active ? 'text-white' : 'bg-green-saculum text-white',
+                              'absolute inset-y-0 right-0 flex items-center pr-4 rounded-sm'
                             )}
                           >
-                            <CheckIcon className="w-5 h-5" aria-hidden="true" />
+                            <CheckIcon className="w-5 h-5 mx-auto" aria-hidden="true" />
                           </span>
                         ) : null}
                       </>

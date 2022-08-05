@@ -29,7 +29,7 @@
       @apply text-justify font-poppins;
     }
     .card-story{
-      @apply px-8 pt-6 pb-8 mb-4 bg-green-saculum shadow-xl rounded-xl text-white
+      @apply px-8 pt-6 pb-8 mb-4 text-white shadow-xl cursor-pointer bg-green-saculum rounded-xl;
     }
 
     .Font{

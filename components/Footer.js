@@ -3,7 +3,7 @@ import Layout from '../components/layout'
 function Footer() {
     let user = false;
 return (
-        <footer class="bg-gray-100 mt-3">
+        <footer class="bg-gray-100">
             <div
                 class="relative max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8 lg:pt-24"
             >

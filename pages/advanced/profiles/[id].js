@@ -6,13 +6,13 @@ import getPostulant from "../../../lib/getPostulant";
 import axios from "axios";
 
 
-function Details({usuario,profile}) {  
+function Details({usuario,profile}) {
     console.log(usuario);
     let randomProfiles = [];
     profile = JSON.parse(profile);
     const result = async () => {
         const data = await axios.get('/api/me');
-        const user = data.data.data.responseBd;
+        const user = data.data.data.responseBd;       
         return await axios.post("/api/addMod", {
             idPostulant: profile.idPostulant,
             dateMod: new Date(),
@@ -20,15 +20,12 @@ function Details({usuario,profile}) {
             request: user.nameUser,
             requestedInfo: "Informacion solicitada del postulante: "+profile.namePostulant+" "+profile.lastName,
             idUserSystem: user.idUser,
-        })
-        
+        })        
 }
-
-
-    //pickeando perfiles randoms con mismas caracteristicas
+//pickeando perfiles randoms con mismas caracteristicas
     const request = async () => {
-        const res = await result();        
-        if(res.status === 200){
+        const res = await result();          
+        if(res.status === "200"){
             toast.success("Se ha solicitado correctamente la Información de " + profile.namePostulant + " " + profile.lastName + ".", {
                 position: "bottom-center",
                 autoClose: 5000,
@@ -39,8 +36,9 @@ function Details({usuario,profile}) {
                 draggable: false,
                 progress: undefined,
             });
-        }else{
-            toast.error("Ha ocurrido un error, por favor intentalo más tarde.", {
+        }
+        else if(res.status === "400"){
+            toast.error("error", {
                 position: "bottom-center",
                 autoClose: 5000,
                 hideProgressBar: false,

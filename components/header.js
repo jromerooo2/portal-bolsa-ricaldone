@@ -1,15 +1,30 @@
 import Link from 'next/link'
 import axios from 'axios';
+import React, {useState, useEffect} from 'react'
 
 function Header() {
-  const user = true;
-  console.log(user);
+  const [user, setUser] = useState(false)
+
+    useEffect(() =>{
+      const checkMe = async () => {
+        let data = await axios.get('/api/me');
+        if(data.data.data.responseBd.userName !== ""){
+          setUser(true)
+        }else{
+          setUser(false)
+        }
+      }
+      checkMe();
+    },[])
 
   const handleLogout = async () => {
     const logout = await axios.get("/api/logout");
+    setUser(false)
     window.location.href = "/";
-    console.log(logout);
-  }
+  }      
+  const handleLogin = () => {
+    window.location.href = "/advanced/profiles";
+  }  
   return (
     <header>
       <nav className="font-bold">        
@@ -31,8 +46,22 @@ function Header() {
             </Link>
           </li>
           {
-          
-            (user  ? (
+            (user ? (
+              
+              <>
+
+                     <li>
+                      <Link href="/advanced/historial">
+                        <a>Historial</a>
+                      </Link>
+                    </li>
+              </>
+            ) : (
+              <>
+              </>
+            ))}
+          {
+            (user ? (
               
               <>
                 <li>
@@ -41,7 +70,7 @@ function Header() {
               </>
             ) : (
               <li>
-                {/* <a href="/api/login">Iniciar Sesión</a> */}
+                <a className='cursor-pointer' onClick={handleLogin}>Iniciar Sesión</a>
               </li>
             ))}
         </ul>

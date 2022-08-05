@@ -24,9 +24,9 @@ function profiles({profiles}){
                                             <span className={`rounded p-2 bg-red-500 text-white absolute -mt-8 ${user.Alumni ? "":"hidden"}`}>Recomendado</span>
                                             <img src={user.img} alt={user.namePostulant} className="mx-auto rounded h-36" />
                                             <h2 className="text-xl font-bold">{user.namePostulant +" "+ user.lastName}</h2>
-                                            <p>{user.email}</p>
-                                            <p>{user.phoneNumber}</p>
-                                            <p>{user.emailAddress}</p>
+                                            <p>{user.mailPostulant}</p>
+                                            {/* <p>{user.phoneNumber}</p>
+                                            <p>{user.emailAddress}</p> */}
                                         </div>
                                     </div>
                                 </Link>
@@ -42,7 +42,17 @@ function profiles({profiles}){
 export async function getServerSideProps({ req, res }) {
 
     //Logic for db querying
-    const profiles = await prisma.Postulants.findMany();
+    const profiles = await prisma.Postulants.findMany({
+        select: {
+            idPostulant: true,
+            namePostulant: true,
+            lastName: true,
+            mailPostulant: true
+          }
+    });
+    //TODO: fetch state to show according to design
+    //awaiting for the promise made up, use the id to
+    //fetch states
     const jsonProfiles = JSON.stringify(profiles);
     return { props: {                    
                     profiles: jsonProfiles
