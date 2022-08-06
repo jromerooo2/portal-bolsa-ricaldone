@@ -7,7 +7,7 @@ import axios from "axios";
 
 
 function Details({usuario,profile}) {
-    console.log(usuario);
+
     let randomProfiles = [];
     profile = JSON.parse(profile);
     const result = async () => {
@@ -63,7 +63,7 @@ function Details({usuario,profile}) {
             </Link>
             <div className="flex items-center justify-center">
                 <div className="items-center md:flex space-x-7">
-                    <img src="https://scontent-ort2-2.xx.fbcdn.net/v/t1.6435-9/138641678_710761912912207_3140463209643283182_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=6snThkQGTCwAX-grUyL&_nc_ht=scontent-ort2-2.xx&oh=00_AT8NUuY_uRIIFjPZqV70-vmkPFYQDVDVk_yo1m2YEt5qvg&oe=62C53940" alt={profile.name} className="mx-auto rounded md:h-96" />
+                    <img src={`data:image/jpeg;base64,${profile.photoPostulant}`} alt={profile.name} className="mx-auto rounded-full md:h-96" />
                     <div className="space-y-5">
                         <h1 className="text-3xl font-bold">{profile.namePostulant +" " +profile.lastName}</h1>
                         <div className="md:grid grid-cols-3 block mr-[1rem] md:mx-0 ">
@@ -97,14 +97,6 @@ function Details({usuario,profile}) {
                                 </h1>                            
                                 <span className="nested-camp">
                                         {profile.SalaryState.Salary}
-                                </span>
-                            </div>
-                            <div className="nested-container">
-                                <h1 className="text-xl"> 
-                                    <b>Estudios Avanzados:</b>                                
-                                </h1>                            
-                                <span className="nested-camp">
-                                        {profile.UniversityStates.StateU}
                                 </span>
                             </div>
                             <div className="nested-container">

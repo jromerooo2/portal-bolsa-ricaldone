@@ -22,7 +22,7 @@ function profiles({profiles}){
                                     <div key={user.userId} className="p-2 my-6 cursor-pointer md:my-9 card">
                                         <div className={`bg-white rounded-lg shadow-xl p-4 ${user.Alumni ? "border border-yellow-500":""}`}>
                                             <span className={`rounded p-2 bg-red-500 text-white absolute -mt-8 ${user.Alumni ? "":"hidden"}`}>Recomendado</span>
-                                            <img src={user.img} alt={user.namePostulant} className="mx-auto rounded h-36" />
+                                            <img src={`data:image/jpeg;base64,${user.photoPostulant}`} alt={user.namePostulant} className="mx-auto rounded h-36" />
                                             <h2 className="text-xl font-bold">{user.namePostulant +" "+ user.lastName}</h2>
                                             <p>{user.mailPostulant}</p>
                                             {/* <p>{user.phoneNumber}</p>
@@ -46,6 +46,8 @@ export async function getServerSideProps({ req, res }) {
         select: {
             idPostulant: true,
             namePostulant: true,
+            photoPostulant: true,
+            Alumni: true,
             lastName: true,
             mailPostulant: true
           }
