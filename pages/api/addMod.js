@@ -30,6 +30,11 @@ export default async (req, res) => {
     if(lastMod.length === 0 || 
        lastMod.length === undefined ||
        lastMod.length === ""){
+        res.status("400").json({ err: "Solo puedes solicitar la informacion del mismo postulante una vez al dia." });
+
+    }else if(
+      lastMod.length !== 0
+      ){
         const result = await prisma.moderations.create({
           data: {
             ...data,
@@ -37,11 +42,6 @@ export default async (req, res) => {
         });
         res.status("200").json(result);
 
-    }else if(
-      lastMod.length !== 0
-      ){
-
-      res.status("400").json({ err: "Solo puedes solicitar la informacion del mismo postulante una vez al dia." });
     }
   
   } catch (err) {

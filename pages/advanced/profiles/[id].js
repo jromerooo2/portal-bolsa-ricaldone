@@ -24,8 +24,11 @@ function Details({usuario,profile}) {
 }
 //pickeando perfiles randoms con mismas caracteristicas
     const request = async () => {
-        const res = await result();          
-        if(res.status === "200"){
+        const res = await result();   
+        
+        console.log(res.status);     
+
+        if(res.status === 200){
             toast.success("Se ha solicitado correctamente la Información de " + profile.namePostulant + " " + profile.lastName + ".", {
                 position: "bottom-center",
                 autoClose: 5000,
@@ -37,7 +40,7 @@ function Details({usuario,profile}) {
                 progress: undefined,
             });
         }
-        else if(res.status === "400"){
+        else if(res.status === 400){
             toast.error("error", {
                 position: "bottom-center",
                 autoClose: 5000,
