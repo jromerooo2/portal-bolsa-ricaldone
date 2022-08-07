@@ -37,7 +37,7 @@ export default function Story(props){
                                 <Link href={'/advanced/profiles/'+story.Postulants.idPostulant} >
                                     <div className='flex items-start justify-between'>
                                         <div className='flex items-center'>
-                                            <img className='w-16 h-16 mr-4 rounded-full' src="https://cdn.discordapp.com/attachments/820024965683216404/985296933931323422/unknown.png" alt={story.Postulants.namePostulant + story.Postulants.lastName} />
+                                            <img className='w-16 h-16 mr-4 rounded-full' src={`data:image/jpeg;base64,${story.Postulants.photoPostulant}`} alt={story.Postulants.namePostulant + story.Postulants.lastName} />
                                             <div className='text-sm'>
                                                 <h1 className='leading-none '>{story.Postulants.namePostulant} {story.Postulants.lastName}</h1>
                                                 <p>{story.requestedInfo}</p>
