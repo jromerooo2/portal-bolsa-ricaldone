@@ -12,38 +12,64 @@ export default async (req, res) => {
   let finalDate = yourDate.toISOString().split('T')[0];
   finalDate = new Date(finalDate);
 
-  const lastMod = await prisma.moderations.findMany({
-    where: {
-      AND: [
-        {dateMod: finalDate},
-        {idPostulant: data.idPostulant},
-        {idUser: data.idUser}
-      ],
-    },
-  })
   
-  try {
+  if(data.idPostulant !== null &&
+     data.idUser !== null){
+    const lastMod = await prisma.moderations.findMany({
+      where: {
+        AND: [
+          {dateMod: finalDate},
+          {idPostulant: data.idPostulant},
+          {idUser: data.idUser}
+        ],
+      },
+    })
 
-    // checking if the last mod is the same day
+    try {
 
-    if(lastMod.length === 0 || 
-       lastMod.length === undefined ||
-       lastMod.length === ""){
-
-        const result = await prisma.moderations.create({
-          data: {
-            ...data,
-          },
-        });
-
-        res.status("200").json(result);
-        
-      }else{
+      // checking if the last mod is the same day
+  
+      if(lastMod.length === 0 || 
+         lastMod.length === undefined ||
+         lastMod.length === ""){
+  
+          const result = await prisma.moderations.create({
+            data: {
+              ...data,
+            },
+          });
+  
+          res.status("200").json(result);
           
-          res.status("400").json({ err: "Solo puedes solicitar la informacion del mismo postulante una vez al dia." });
+        }else{
+            
+            res.status("400").json({ err: "Solo puedes solicitar la informacion del mismo postulante una vez al dia." });
+      }
+    
+    } catch (err) {
+      res.status(500).json({ err: "Error occured while adding a new food." });
     }
+
+  }else{
+
+    try {
+
+      // checking if the last mod is the same day
   
-  } catch (err) {
-    res.status(500).json({ err: "Error occured while adding a new food." });
+          const result = await prisma.moderations.create({
+            data: {
+              ...data,
+            },
+          });
+  
+          res.status("200").json(result);
+          
+    
+    } catch (err) {
+      res.status(500).json({ err: "Error occured while adding a new food." });
+    }
   }
+
+  
+
 };

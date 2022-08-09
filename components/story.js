@@ -5,7 +5,6 @@ import Link from 'next/link';
 
 export default function Story(props){
   let { storyData, user } = props;
-  console.log(storyData);
 
   return (
     <Layout>

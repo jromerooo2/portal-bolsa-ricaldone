@@ -3,6 +3,7 @@ import { handleLogin } from '../lib/handleSession';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Layout from './layout';
+import Link from 'next/link';
 
 export default function FormLogin() {
   const [username, setUsername] = useState("")
@@ -62,7 +63,13 @@ export default function FormLogin() {
                     </button>
               </div>
           </form>
-          <p className='text-green-700'>Sin cuenta aún?  <a href="#" className='text-blue-400 underline underline-offset-1	decoration-solid'>Solicita Tu Cuenta</a>.</p>
+          <p className=''>Sin cuenta aún?       
+          <Link href="/recuperar"> 
+              <a className='text-blue-400 underline underline-offset-1 decoration-solid'>
+                 Solicita Tu Cuenta
+                </a>
+          </Link>.
+          </p>
         </div>
         <div className='bg-green-saculum-lighter md:w-1/2 h-full md:flex flex-col m-0 hidden'>
           <img src="/login2.svg" className='md:h-[400px] m-auto' alt="me"/>
