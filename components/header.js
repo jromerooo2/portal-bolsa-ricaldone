@@ -40,11 +40,6 @@ function Header() {
                       </Link>
                     </li>
 
-          <li>
-            <Link href="/about">
-              <a>Sobre Nosotros</a>
-            </Link>
-          </li>
           {
             (user ? (
               

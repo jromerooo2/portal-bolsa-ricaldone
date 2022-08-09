@@ -4,7 +4,7 @@ export default function HeroTwo(){
       >
         <div className="p-8 md:p-12 lg:px-16 lg:py-24 bg-green-900/25">
           <div className="max-w-xl text-center sm:text-left">
-            <div className="bg-white/30">
+            <div className="bg-white/30 p-3">
                 <h2 className="text-2xl font-bold text-black/80  sm:text-3xl md:text-5xl font-poppins">
                 Los trabajos patrocinados tienen 4.5 veces más probabilidades de resultar en una contratación*.
                 </h2>
