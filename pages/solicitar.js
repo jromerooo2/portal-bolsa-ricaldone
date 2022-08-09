@@ -1,10 +1,10 @@
 import Layout from "../components/layout";
-import Contra from "../components/Contra";
+import Solicitar from "../components/Solicitar";
 
 function Recuperar(){
     return (
       <Layout>          
-        <Contra />
+        <Solicitar />
       </Layout>
     )
 } 

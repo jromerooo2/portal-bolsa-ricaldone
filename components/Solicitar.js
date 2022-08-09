@@ -9,9 +9,6 @@ export default function Contra(){
   const [empresa,setEmpresa] = useState("");
 
   const result = async () => {
-     if(correo === "" || nombre === "" || empresa === ""){
-       alert("Por favor, llene todos los campos");
-     }else{
             return await axios.post("/api/addMod", {
                 idPostulant: null,
                 dateMod: new Date(),
@@ -19,27 +16,39 @@ export default function Contra(){
                 request: nombre,
                 requestedInfo: "La persona "+nombre+" con correo "+correo+" de la empresa "+empresa+" ha solicitado su perfil en el sistema.",
                 idUserSystem: null,
-            })    
-  }    
+            })        
 }
 //pickeando perfiles randoms con mismas caracteristicas
 const request = async () => {  
 
     try {
-        const res = await result();  
-        
-        if(res.status === 200){
-                toast.success(" Haz solicitado correctamente tu cuenta en el sistema.", {
-                    position: "bottom-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    theme: "dark",
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: false,
-                    progress: undefined,
-                });
-        }
+        if(correo === "" || nombre === "" || empresa === ""){
+          toast.error("Por favor, llene todos los campos", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          theme: "dark",
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: false,
+          progress: undefined,
+      });
+      }else{
+          const res = await result();  
+          
+          if(res.status === 200){
+                  toast.success(" Haz solicitado correctamente tu cuenta en el sistema.", {
+                      position: "bottom-center",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      theme: "dark",
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: false,
+                      progress: undefined,
+                  });
+          }
+      }
         
     }
      catch (error) {  

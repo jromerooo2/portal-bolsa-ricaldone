@@ -115,7 +115,7 @@ return (
                 </div>
 
                 <p class="mt-12 text-sm text-center text-gray-400 lg:text-right PText">
-                    Copyright &copy; 2022. Todos los derechos reservados.
+                    Copyright Sacculum &copy; {new Date().getFullYear()} . Todos los derechos reservados.
                 </p>
             </div>
         </footer> 
