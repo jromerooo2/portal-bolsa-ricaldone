@@ -74,46 +74,46 @@ function handleSubmit(){
 }
     return (
 
-<div class="text-gray-100 px-8 py-12 bg-green-saculum-lighter font-poppins shadow-2xl">
-      <div class="text-center w-full">
+<div className="text-gray-100 px-8 py-12 bg-green-saculum-lighter font-poppins shadow-2xl">
+      <div className="text-center w-full">
       </div>
       <div
-        class="max-w-screen-xl mt-24 px-8 grid gap-16 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-gray-100 text-gray-900 rounded-lg shadow-lg">
-        <div class="flex flex-col justify-between space-y-4">
+        className="max-w-screen-xl mt-24 px-8 grid gap-16 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-gray-100 text-gray-900 rounded-lg shadow-lg">
+        <div className="flex flex-col justify-between space-y-4">
           <div>
-            <h2 class="text-2xl lg:text-4xl font-bold leading-tight ">Solicita Tu Cuenta en Sacculum.</h2>
-            <p class="text-gray-600 text-md">Responderemos con tu los datos de tu cuenta en cuanto hayamos verificado tu identidad.</p>
+            <h2 className="text-2xl lg:text-4xl font-bold leading-tight ">Solicita Tu Cuenta en Sacculum.</h2>
+            <p className="text-gray-600 text-md">Responderemos con tu los datos de tu cuenta en cuanto hayamos verificado tu identidad.</p>
           </div>
-          <div class="">
+          <div className="">
             <img src="/mail.svg" alt="logo" className=""/>
           </div>
         </div>
-        <div class="">
+        <div className="">
           <div>
-            <span class="uppercase text-sm text-gray-600 font-bold">Nombre Completo</span>
+            <span className="uppercase text-sm text-gray-600 font-bold">Nombre Completo</span>
             <input 
             onChange={(e) => setNombre(e.target.value)}
             required 
-            class="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+            className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
               type="text" placeholder="" />
           </div>
-          <div class="mt-8">
-            <span class="uppercase text-sm text-gray-600 font-bold">Correo Electrónico</span>
+          <div className="mt-8">
+            <span className="uppercase text-sm text-gray-600 font-bold">Correo Electrónico</span>
             <input 
             onChange={(e) => setCorreo(e.target.value)}
             required 
-            class="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+            className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
               type="text" />
           </div>
-          <div class="mt-8">
-            <span class="uppercase text-sm text-gray-600 font-bold">Empresa a la que pertenece</span>
-            <input onChange={(e) => setEmpresa(e.target.value)} required class="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+          <div className="mt-8">
+            <span className="uppercase text-sm text-gray-600 font-bold">Empresa a la que pertenece</span>
+            <input onChange={(e) => setEmpresa(e.target.value)} required className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
               type="text" />
           </div>
-          <div class="mt-8">
+          <div className="mt-8">
             <button 
               onClick={handleSubmit}
-              class="uppercase text-sm font-bold tracking-wide bg-green-saculum text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline">
+              className="uppercase text-sm font-bold tracking-wide bg-green-saculum text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline">
               Solicitar
             </button>
             <ToastContainer>

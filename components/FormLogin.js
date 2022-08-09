@@ -52,9 +52,9 @@ export default function FormLogin() {
                   <a href="#" className='text-green-700 underline underline-offset-1 tracking-wide'>¿Olvidaste tu contraseña?</a>
               </div>
               <div className='flex flex-col items-center'>
-                    <button class="inline-flex items-center justify-center px-6 py-3 bg-green-saculum hover:bg-green-saculum-light text-white font-medium rounded-md mx-4 w-2/3" onClick={handleLoginLocal()}>
+                    <button className="inline-flex items-center justify-center px-6 py-3 bg-green-saculum hover:bg-green-saculum-light text-white font-medium rounded-md mx-4 w-2/3" onClick={handleLoginLocal()}>
                       Iniciar Sesión
-                    {/* <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-narrow-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    {/* <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-narrow-right" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                       <line x1="5" y1="12" x2="19" y2="12" />
                       <line x1="15" y1="16" x2="19" y2="12" />
