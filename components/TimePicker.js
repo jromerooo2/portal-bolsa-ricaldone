@@ -1,5 +1,6 @@
 import { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
+import { useEffect } from 'react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
 
 const people = [
@@ -21,8 +22,13 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default function TimePicker(props) {
   const [selected, setSelected] = useState(people[0])
+
+  useEffect(() =>  {
+    props.callBack(selected);
+  }, [selected])
+  
 
   return (
     <Listbox value={selected} onChange={setSelected}>

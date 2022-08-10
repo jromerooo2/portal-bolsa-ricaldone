@@ -1,10 +1,28 @@
-import React from 'react'
+import React,{ useState, useEffect} from 'react'
 import Layout from './layout'
 import TimePicker from './TimePicker'
 import Link from 'next/link';
 
 export default function Story(props){
   let { storyData, user } = props;
+  const [dateFiltered, setFilter] = useState(storyData);
+
+  const handleChange = (e) => {
+    
+    if(e.id === 1){
+
+        const sortedDates = storyData?.map(obj => { return { ...obj, dateMod: new Date(`${obj.dateMod}`.replace(/-/g, '\/').replace(/T.+/, '')) } }).sort((a, b) => b.dateMod - a.dateMod);     
+        setFilter(sortedDates);
+    
+    }else{
+
+        const sortedDates = storyData?.map(obj => { return { ...obj, dateMod: new Date(`${obj.dateMod}`.replace(/-/g, '\/').replace(/T.+/, '')) } }).sort((a, b) => a.dateMod - b.dateMod);     
+
+        setFilter(sortedDates);
+    }   
+
+  }
+
 
   return (
     <Layout>
@@ -21,15 +39,15 @@ export default function Story(props){
         </div>
         <div className=''>
           <div className='md:w-1/2 font-poppins'>
-            <TimePicker/>
+            <TimePicker callBack={handleChange}/>
           </div>
         </div>        
 
       </div>
 
-        <div className='grid-cols-3 gap-3 mt-3 md:mt-9 md:grid'>
+        <div className='grid-cols-3 gap-3 mt-3 md:mt-9 md:grid p-5'>
             {
-                storyData.map((story, index) => {
+                dateFiltered.map((story, index) => {
                     return (
                         <div key={index}>
                             <div className='card-story'>
@@ -44,13 +62,10 @@ export default function Story(props){
                                             </div>
                                         </div>
                                         <div className='flex items-start'>
-                                            <p className='text-xs '>{
-                                                    new Date(story.dateMod).toLocaleDateString('es-ES', {
-                                                        day: 'numeric',
-                                                        month: 'long',
-                                                        year: 'numeric'
-                                                    })                                               
-                                                    }
+                                            <p className='text-xs '>
+                                                {    
+                                                    new Date(story.dateMod).toLocaleDateString('es-ES')
+                                                }
                                             </p>
                                         </div>
                                     </div>

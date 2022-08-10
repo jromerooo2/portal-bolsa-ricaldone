@@ -35,7 +35,6 @@ export default function Hero(){
             </div>
             </div>
         </div>
-
         <img
             src="/index2.svg"
             className="h-2/3 mx-auto"
