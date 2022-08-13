@@ -64,7 +64,7 @@ export default function FormLogin() {
               </div>
           </form>
           <p className=''>Sin cuenta aún?       
-          <Link href="/recuperar"> 
+          <Link href="/solicitar"> 
               <a className='text-blue-400 underline underline-offset-1 decoration-solid'>
                  Solicita Tu Cuenta
                 </a>

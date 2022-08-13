@@ -5,18 +5,25 @@ import Link from 'next/link';
 
 export default function Story(props){
   let { storyData, user } = props;
-  const [dateFiltered, setFilter] = useState(storyData);
+  
+    const handleLatest = () => {
+        return storyData?.map(obj => { return { ...obj, dateMod: new Date(`${obj.dateMod}`.replace(/-/g, '\/').replace(/T.+/, '')) } }).sort((a, b) => b.dateMod - a.dateMod);
+    }
+    const handleOldest = () => {
+        return storyData?.map(obj => { return { ...obj, dateMod: new Date(`${obj.dateMod}`.replace(/-/g, '\/').replace(/T.+/, '')) } }).sort((a, b) => a.dateMod - b.dateMod)
+    }
+  const [dateFiltered, setFilter] = useState(handleLatest());
 
   const handleChange = (e) => {
     
     if(e.id === 1){
 
-        const sortedDates = storyData?.map(obj => { return { ...obj, dateMod: new Date(`${obj.dateMod}`.replace(/-/g, '\/').replace(/T.+/, '')) } }).sort((a, b) => b.dateMod - a.dateMod);     
+        const sortedDates = handleLatest();     
         setFilter(sortedDates);
     
     }else{
 
-        const sortedDates = storyData?.map(obj => { return { ...obj, dateMod: new Date(`${obj.dateMod}`.replace(/-/g, '\/').replace(/T.+/, '')) } }).sort((a, b) => a.dateMod - b.dateMod);     
+        const sortedDates = handleOldest();     
 
         setFilter(sortedDates);
     }   
@@ -64,7 +71,11 @@ export default function Story(props){
                                         <div className='flex items-start'>
                                             <p className='text-xs '>
                                                 {    
-                                                    new Date(story.dateMod).toLocaleDateString('es-ES')
+                                                 new Date(story.dateMod).toLocaleDateString('es-ES', {
+                                                    day: 'numeric',
+                                                    month: 'long',
+                                                    year: 'numeric'
+                                                }) 
                                                 }
                                             </p>
                                         </div>

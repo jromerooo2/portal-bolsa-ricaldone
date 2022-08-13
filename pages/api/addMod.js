@@ -4,31 +4,32 @@ const prisma = new PrismaClient();
 
 export default async (req, res) => {
   const data = req.body;
-
-  let yourDate = new Date();
-
-  const offset = yourDate.getTimezoneOffset()
-  yourDate = new Date(yourDate.getTime() - (offset*60*1000))
-  let finalDate = yourDate.toISOString().split('T')[0];
-  finalDate = new Date(finalDate);
-
   
-  if(data.idPostulant !== null &&
-     data.idUser !== null){
-    const lastMod = await prisma.moderations.findMany({
-      where: {
-        AND: [
-          {dateMod: finalDate},
-          {idPostulant: data.idPostulant},
-          {idUser: data.idUser}
-        ],
-      },
-    })
-
+  
+  if(data.idPostulant !== null ||
+    data.idPostulant !== undefined ||
+    data.idUser !== null ||
+     data.idUser !== undefined){
     try {
 
       // checking if the last mod is the same day
-  
+      let yourDate = new Date();
+
+      const offset = yourDate.getTimezoneOffset()
+      yourDate = new Date(yourDate.getTime() - (offset*60*1000))
+      let finalDate = yourDate.toISOString().split('T')[0];
+      finalDate = new Date(finalDate);
+        
+      const lastMod = await prisma.moderations.findMany({
+        where: {
+          AND: [
+            // {dateMod: finalDate},
+            {idPostulant: data.idPostulant},
+            {idUserSystem: data.idUserSystem}
+          ],
+        },
+      })
+      console.log(lastMod.length)
       if(lastMod.length === 0 || 
          lastMod.length === undefined ||
          lastMod.length === ""){
@@ -43,7 +44,7 @@ export default async (req, res) => {
           
         }else{
             
-            res.status("400").json({ err: "Solo puedes solicitar la informacion del mismo postulante una vez al dia." });
+            res.status("400").json({ err: "Solo puedes solicitar la informacion del mismo postulante una vez." });
       }
     
     } catch (err) {
@@ -53,9 +54,6 @@ export default async (req, res) => {
   }else{
 
     try {
-
-      // checking if the last mod is the same day
-  
           const result = await prisma.moderations.create({
             data: {
               ...data,

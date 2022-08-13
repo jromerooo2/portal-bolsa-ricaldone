@@ -53,7 +53,7 @@ const request = async () => {
     }
      catch (error) {  
       console.log(error);     
-        toast.error("Mal ahi loco", {
+        toast.error("Ocurrio Un Error", {
             position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,

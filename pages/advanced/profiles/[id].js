@@ -12,14 +12,17 @@ function Details({usuario,profile}) {
     profile = JSON.parse(profile);
     const result = async () => {
         const data = await axios.get('/api/me');
-        const user = data.data.data.responseBd;       
+        const user = data.data.data.responseBd;
+        
+        console.log(user.idUser);    
+
         return await axios.post("/api/addMod", {
             idPostulant: profile.idPostulant,
             dateMod: new Date(),
             context: user.mailUser,
             request: user.nameUser,
             requestedInfo: "Informacion solicitada del postulante: "+profile.namePostulant+" "+profile.lastName,
-            idUserSystem: user.idUser,
+            idUserSystem: user.idUser
         })        
 }
 //pickeando perfiles randoms con mismas caracteristicas

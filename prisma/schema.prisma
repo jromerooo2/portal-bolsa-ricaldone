@@ -60,9 +60,9 @@ model Moderations {
   idMod         Int          @id(map: "PK__Moderati__3DC69A5DC68B0CD5") @default(autoincrement())
   idPostulant   Int?
   dateMod       DateTime?    @db.Date
-  context       String?      @db.VarChar(200)
-  request       String?      @db.VarChar(100)
-  requestedInfo String?      @db.VarChar(100)
+  context       String?      @db.VarChar(Max)
+  request       String?      @db.VarChar(Max)
+  requestedInfo String?      @db.VarChar(Max)
   idUserSystem  Int?
   Postulants    Postulants?  @relation(fields: [idPostulant], references: [idPostulant], onDelete: NoAction, onUpdate: NoAction, map: "fk_ModerationsPostulants")
   UserSystems   UserSystems? @relation(fields: [idUserSystem], references: [idUser], onDelete: NoAction, onUpdate: NoAction, map: "fk_ModerationUserSystem")
