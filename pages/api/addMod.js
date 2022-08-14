@@ -5,11 +5,9 @@ const prisma = new PrismaClient();
 export default async (req, res) => {
   const data = req.body;
   
-  
-  if(data.idPostulant !== null ||
-    data.idPostulant !== undefined ||
-    data.idUser !== null ||
-     data.idUser !== undefined){
+  console.log(data);
+  if(!data.idPostulant === null ||
+    !data.idUser === null){
     try {
 
       // checking if the last mod is the same day
@@ -29,7 +27,9 @@ export default async (req, res) => {
           ],
         },
       })
+
       console.log(lastMod.length)
+      
       if(lastMod.length === 0 || 
          lastMod.length === undefined ||
          lastMod.length === ""){

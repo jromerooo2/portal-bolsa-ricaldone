@@ -1,4 +1,3 @@
- 
 import { SMTPClient } from 'emailjs';
   
 export default function handler(req, res) {
@@ -19,8 +18,7 @@ export default function handler(req, res) {
        text: `Tu código de verificación es: ${Codigo}`,	
        from: process.env.mail,
        to: email,
-       subject: 'Código de verificación Sacculum',
-      
+       subject: 'Código de verificación Sacculum'      
      }
      )
    }
