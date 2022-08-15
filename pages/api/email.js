@@ -2,7 +2,7 @@ import { SMTPClient } from 'emailjs';
   
 export default function handler(req, res) {
  
- const {email,Codigo}=req.body;
+ const {email,Codigo, subject,text}=req.body;
 
  const client = new SMTPClient({
    user: process.env.mail,
@@ -15,10 +15,10 @@ export default function handler(req, res) {
 
    client.sendAsync(
      {
-       text: `Tu código de verificación es: ${Codigo}`,	
+       text: `${text} ${Codigo}`,	
        from: process.env.mail,
        to: email,
-       subject: 'Código de verificación Sacculum'      
+       subject: subject 
      }
      )
    }
