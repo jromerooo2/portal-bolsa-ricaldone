@@ -6,8 +6,7 @@ export default async (req, res) => {
   const data = req.body;
   
   console.log(data);
-  if(!data.idPostulant === null ||
-    !data.idUser === null){
+  if(data.idPostulant !== null){
     try {
 
       // checking if the last mod is the same day
@@ -51,7 +50,9 @@ export default async (req, res) => {
       res.status(500).json({ err: "Error occured while adding a new food." });
     }
 
-  }else{
+  }else if(
+    data.idPostulant === null
+    ){
 
     try {
           const result = await prisma.moderations.create({

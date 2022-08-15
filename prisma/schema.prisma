@@ -74,7 +74,7 @@ model Postulants {
   mailPostulant                                   String?           @db.VarChar(45)
   Pword                                           String?           @db.VarChar(10)
   photoPostulant                                  String?           @db.VarChar(Max)
-  resumePDF                                       Bytes?            @db.VarBinary(1)
+  resumePDF                                       String?           @db.VarChar(Max)
   resumeDetails                                   String?           @db.VarChar(Max)
   mailverification                                Boolean?
   Gender                                          Int?
