@@ -6,19 +6,19 @@ export default function historial() {
   let storyReturn;
   let [story, setStory] = React.useState([]);
   let [user, setUser] = React.useState([]);
-  useEffect(() => {
-    
-    const result = async () => {
-      let data = await axios.get('/api/me');
-      let user = await data.data.data.responseBd;
-      let story = await axios.get('/api/story/' + user.idUser);
-      storyReturn = story.data;
-      setStory(storyReturn);
+  
+  const result = async () => {
+    let data = await axios.get('/api/me');
+    let user = await data.data.data.responseBd;
+    let story = await axios.get('/api/story/' + user.idUser);
+    storyReturn = story.data;
+    setStory(storyReturn);
+    setUser(user);
+  }
 
-      setUser(user);
-    }
+  useEffect(() => {
     result();
-  }, [])
+  }, []);
 
 
   return (

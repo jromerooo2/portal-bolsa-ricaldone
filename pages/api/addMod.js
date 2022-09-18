@@ -4,8 +4,7 @@ const prisma = new PrismaClient();
 
 export default async (req, res) => {
   const data = req.body;
-  
-  console.log(data);
+
   if(data.idPostulant !== null){
     try {
 
@@ -27,7 +26,7 @@ export default async (req, res) => {
         },
       })
 
-      console.log(lastMod.length)
+      (lastMod.length)
       
       if(lastMod.length === 0 || 
          lastMod.length === undefined ||

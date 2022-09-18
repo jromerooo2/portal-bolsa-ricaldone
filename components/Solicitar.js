@@ -51,8 +51,7 @@ const request = async () => {
       }
         
     }
-     catch (error) {  
-      console.log(error);     
+     catch (error) {    
         toast.error("Ocurrio Un Error", {
             position: "bottom-center",
             autoClose: 5000,

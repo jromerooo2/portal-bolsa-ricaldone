@@ -4,15 +4,21 @@ import TimePicker from './TimePicker'
 import Link from 'next/link';
 
 export default function Story(props){
+
   let { storyData, user } = props;
   
-    const handleLatest = () => {
+  const handleLatest = () => {
         return storyData?.map(obj => { return { ...obj, dateMod: new Date(`${obj.dateMod}`.replace(/-/g, '\/').replace(/T.+/, '')) } }).sort((a, b) => b.dateMod - a.dateMod);
-    }
+}
     const handleOldest = () => {
         return storyData?.map(obj => { return { ...obj, dateMod: new Date(`${obj.dateMod}`.replace(/-/g, '\/').replace(/T.+/, '')) } }).sort((a, b) => a.dateMod - b.dateMod)
     }
-  const [dateFiltered, setFilter] = useState(handleLatest());
+    
+  const [dateFiltered, setFilter] = useState([]);   
+
+    useEffect(() => {
+            setFilter(handleLatest());
+    },[storyData])
 
   const handleChange = (e) => {
     
@@ -24,7 +30,6 @@ export default function Story(props){
     }else{
 
         const sortedDates = handleOldest();     
-
         setFilter(sortedDates);
     }   
 
