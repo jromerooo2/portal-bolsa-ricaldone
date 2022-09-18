@@ -14,8 +14,6 @@ function Details({usuario,profile}) {
         const data = await axios.get('/api/me');
         const user = data.data.data.responseBd;
         
-        console.log(user.idUser);    
-
         return await axios.post("/api/addMod", {
             idPostulant: profile.idPostulant,
             dateMod: new Date(),
