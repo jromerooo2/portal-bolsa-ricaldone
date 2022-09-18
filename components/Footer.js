@@ -13,7 +13,7 @@ return (
                         <div className="flex justify-center text-teal-600 lg:justify-start">
                         </div>
                         <img
-                        className="h-28"
+                        className="h-24 mx-auto md:h-28"
                         src='/logo.png'>
                         </img>
                         <p
