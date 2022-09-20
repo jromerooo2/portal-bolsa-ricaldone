@@ -25,8 +25,6 @@ export default async (req, res) => {
           ],
         },
       })
-
-      (lastMod.length)
       
       if(lastMod.length === 0 || 
          lastMod.length === undefined ||
