@@ -13,27 +13,27 @@ export default function handler(req, res) {
  
  try{
 
-    if(base64 !== ""){
+    if(base64 === "" || base64 === undefined){
         client.sendAsync(
-              {
-                text: `${text}`,	
-                from: process.env.mail,
-                to: email,
-                subject: subject,
-                attachment: [
-                  {
-                    data: base64, encoded:true, name:"cv.pdf",type:"document/pdf"
-                  },
-                ],
-              }
+          {
+            text: `${text} ${Codigo}`,
+            from: process.env.mail,
+            to: email,
+            subject: subject
+          }
           )
     }else{
       client.sendAsync(
         {
-          text: `${text} ${Codigo}`,
+          text: `${text}`,	
           from: process.env.mail,
           to: email,
-          subject: subject
+          subject: subject,
+          attachment: [
+            {
+              data: base64, encoded:true, name:"cv.pdf",type:"document/pdf"
+            },
+          ],
         }
       )
     }
