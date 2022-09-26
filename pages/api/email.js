@@ -14,6 +14,7 @@ export default function handler(req, res) {
  try{
 
     if(base64 === "" || base64 === undefined){
+      if(Codigo === undefined){
         client.sendAsync(
           {
             text: `${text} ${Codigo}`,
@@ -21,7 +22,18 @@ export default function handler(req, res) {
             to: email,
             subject: subject
           }
-          )
+        )
+      }else{
+        client.sendAsync(
+          {
+            text: `${text}`,
+            from: process.env.mail,
+            to: email,
+            subject: subject
+          }
+        )
+      }
+        
     }else{
       client.sendAsync(
         {
