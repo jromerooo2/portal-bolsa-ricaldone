@@ -14,7 +14,7 @@ export default function handler(req, res) {
  try{
 
     if(base64 === "" || base64 === undefined){
-      if(Codigo === undefined || Codigo === ""){
+      if(Codigo !== undefined || Codigo !== ""){
         client.sendAsync(
           {
             text: `${text} ${Codigo}`,
