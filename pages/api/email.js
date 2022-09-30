@@ -2,7 +2,7 @@ import { SMTPClient } from 'emailjs';
   
 export default function handler(req, res) {
  
- const {email,Codigo, subject,text,base64}=req.body;
+ const {email, subject,text,base64}=req.body;
 
  const client = new SMTPClient({
    user: process.env.mail,
@@ -14,16 +14,6 @@ export default function handler(req, res) {
  try{
 
     if(base64 === "" || base64 === undefined){
-      if(Codigo !== undefined || Codigo !== ""){
-        client.sendAsync(
-          {
-            text: `${text} ${Codigo}`,
-            from: process.env.mail,
-            to: email,
-            subject: subject
-          }
-        )
-      }else{
         client.sendAsync(
           {
             text: `${text}`,
@@ -32,8 +22,6 @@ export default function handler(req, res) {
             subject: subject
           }
         )
-      }
-        
     }else{
       client.sendAsync(
         {
