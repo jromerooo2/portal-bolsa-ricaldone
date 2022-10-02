@@ -135,7 +135,7 @@ function Details({usuario,profile}) {
                         
                         </div>
                         <p className="text-xl text-center text-green-800 PText">{`Para solicitar información de ${profile.namePostulant +" "+ profile.lastName}, haz click en el botón de abajo`}</p>
-                        <button onClick={request} className="block px-4 py-2 mx-auto font-bold text-white bg-green-500 rounded hover:bg-green-700">Solicitar Información</button>
+                        <button onClick={request} className="block px-4 py-2 mx-auto font-bold text-white bg-lime-600 rounded hover:bg-lime-900">Solicitar Información</button>
                         
                         <ToastContainer>
                         </ToastContainer>
