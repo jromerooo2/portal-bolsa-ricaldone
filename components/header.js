@@ -75,7 +75,7 @@ function Header() {
         header {
           padding: 0.2rem;
           color: #fff;
-          background-color: #333;
+          background-color: #55772B;
         }
         nav {
           max-width: 42rem;
@@ -96,6 +96,10 @@ function Header() {
         a {
           color: #fff;
           text-decoration: none;
+          font-size: 1.2rem;
+        }
+        a:hover {
+          color:#EFF5D5;
         }
         button {
           font-size: 1rem;

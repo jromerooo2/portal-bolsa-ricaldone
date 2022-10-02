@@ -6,11 +6,14 @@
     h1 {
       @apply text-2xl font-bold font-poppins;
     }
+    .nested-title{
+      @apply text-xl font-bold font-poppins text-lime-900;
+    }
     .nested-camp{
-      @apply font-semibold text-green-600 font-poppins;
+      @apply font-semibold text-neutral-700 font-poppins;
     }
     .nested-container{
-      @apply px-4 py-3 my-3 text-center bg-green-100 border-green-400 rounded-full md:m-3;
+      @apply px-4 py-3 my-3 text-center bg-green-100 border-green-400 rounded-lg md:m-3;
     }
 
     .header{
