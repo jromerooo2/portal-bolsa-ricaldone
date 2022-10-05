@@ -101,11 +101,13 @@ export async function getServerSideProps({ req, res }) {
           include: {         
             workSubjects: true
           }
-            });
+        });
+        
     //TODO: fetch state to show according to design
     //awaiting for the promise made up, use the id to
     //fetch states
     const jsonProfiles = JSON.stringify(profiles);
+    
     return { props: {                    
                     profiles: jsonProfiles
                     } 

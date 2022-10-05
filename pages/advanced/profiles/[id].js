@@ -4,16 +4,43 @@ import { toast,ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import getPostulant from "../../../lib/getPostulant";
 import axios from "axios";
+import getRandomPostulants from "../../../lib/getRandomPostulants";
+import { useEffect } from "react";
+import { info } from "autoprefixer";
 
+function Details({usuario,profile,randomProfiles}) {
 
-function Details({usuario,profile}) {
+    randomProfiles = JSON.parse(randomProfiles);
+    console.log(randomProfiles);
+    profile = JSON.parse(profile); 
+    let info_User = {
+            wsubj: profile.WSubject,
+            salary: profile.Salary,
+            contract_type: profile.ContractType,
+            depa:profile.IDepartment
+    }    
+    
+    //pickeando perfiles randoms con mismas caracteristicas
+    // const getProfiles = async () => {    
+    //     const res = await axios.get(`http://localhost:3000/api/profiles/`,{
+    //         params: {
+    //             info: info_User
+    //           }
+    //     });
+    //     alert("hola");
+    //     console.log(res.data);
+    //     randomProfiles = res.data;
+    // }
+    
+    // useEffect(() => {
+    //     getProfiles();
+    // },[]);
 
-    let randomProfiles = [];
-    profile = JSON.parse(profile);
     const result = async () => {
         const data = await axios.get('/api/me');
-        const user = data.data.data.responseBd;
-        
+        const user = data.data.data.responseBd;            
+
+    
         return await axios.post("/api/addMod", {
             idPostulant: profile.idPostulant,
             dateMod: new Date(),
@@ -22,8 +49,7 @@ function Details({usuario,profile}) {
             requestedInfo: "Informacion solicitada del postulante: "+profile.namePostulant+" "+profile.lastName,
             idUserSystem: user.idUser
         })        
-}
-//pickeando perfiles randoms con mismas caracteristicas
+    }
     const request = async () => {  
 
         try {
@@ -72,7 +98,7 @@ function Details({usuario,profile}) {
             </Link>
             <div className="flex items-center justify-center">
                 <div className="items-center md:flex space-x-7">
-                    <img src={`data:image/jpeg;base64,${profile.photoPostulant}`} alt={profile.name} className="mx-auto rounded-full ml-2 md:h-96" />
+                    <img src={`data:image/jpeg;base64,${profile.photoPostulant}`} alt={profile.name} className="mx-auto ml-2 rounded-full md:h-96" />
                     <div className="space-y-5">
                         <h1 className="text-3xl font-bold text-green-900">{profile.namePostulant +" " +profile.lastName}</h1>
                         <div className="md:grid grid-cols-3 block mr-[1rem] md:mx-0">
@@ -135,13 +161,40 @@ function Details({usuario,profile}) {
                         
                         </div>
                         <p className="text-xl text-center text-green-800 PText">{`Para solicitar información de ${profile.namePostulant +" "+ profile.lastName}, haz click en el botón de abajo`}</p>
-                        <button onClick={request} className="block px-4 py-2 mx-auto font-bold text-white bg-lime-600 rounded hover:bg-lime-900">Solicitar Información</button>
+                        <button onClick={request} className="block px-4 py-2 mx-auto font-bold text-white rounded bg-lime-600 hover:bg-lime-900">Solicitar Información</button>
                         
                         <ToastContainer>
                         </ToastContainer>
                     </div>
+                    
                 </div>
                 
+                
+            </div>
+
+            <div className="">
+                <h1 className="p-8 text-3xl font-bold text-center text-lime-900">Perfiles Recomendados</h1>
+                <div className="grid grid-flow-col auto-cols-auto">
+                    {
+                        randomProfiles.map(
+                            profile => (
+                                    <div key={profile.idPostulant}>
+                                        <Link  href={'/advanced/profiles/'+profile.idPostulant} >
+                                            <div  className="p-2 my-6 cursor-pointer md:my-9 card md:w-auto w-46">
+                                                <div className={`bg-white rounded-lg shadow-xl p-4 ${profile.Alumni ? "border border-yellow-500":""}`}>
+                                                    <div className="flex items-center justify-center">
+                                                        <img src="./logo.png" alt={profile.namePostulant} className="mx-auto rounded md:h-64" />
+                                                     </div>
+                                                    <div className="space-y-5">
+                                                        <h1 className="text-3xl font-bold">{profile.namePostulant} <br></br> {profile.lastName}</h1>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </div>
+                        )) 
+                    }
+                </div>
             </div>
             
         </Layout>
@@ -158,9 +211,20 @@ export async function getServerSideProps({ params,req, res }) {
 
     const jsonProfile = JSON.stringify(profile);
 
+    const pr = JSON.parse(jsonProfile);
+    
+    let info_User = {
+        wsubj: pr.WSubject,
+        salary: pr.Salary,
+        contract_type: pr.ContractType,
+        depa:pr.IDepartment
+    }    
 
+    const randomProfiles = await getRandomPostulants(info_User);
+    console.log(randomProfiles);
     return { props:  {
-                        profile:jsonProfile                    
+                        profile:jsonProfile,
+                        randomProfiles:JSON.stringify(randomProfiles)               
                     } 
             }
 }
