@@ -143,32 +143,7 @@ function Details({usuario,profile}) {
                 </div>
                 
             </div>
-            <div className="">
-                <h1 className="p-8 text-3xl font-bold text-center text-lime-900">Perfiles Recomendados</h1>
-                <div className="grid grid-cols-2 md:grid-cols-4 ">
-                    {
-                        randomProfiles.map(
-                            profile => (
-                                    <div key={profile.userId}>
-                                        <Link  href={'/advanced/profiles/'+profile.userId} >
-                                            <div  className="p-2 my-6 cursor-pointer md:my-9 card md:w-auto w-46">
-                                                <div className={`bg-white rounded-lg shadow-xl p-4 ${profile.exalumno ? "border border-yellow-500":""}`}>
-                                                    <div className="flex items-center justify-center">
-                                                        <img src={profile.img} alt={profile.name} className="mx-auto rounded md:h-64" />
-                                                     </div>
-                                                    <div className="space-y-5">
-                                                        <h1 className="text-3xl font-bold">{profile.namePostulant} <br></br> {profile.lastName}</h1>
-                                                        {/* <h1 className="text-xl"> <b>Número de Teléfono:</b><br></br> {profile.phoneNumber}</h1> */}
-                                                        {/* <h1 className="text-xl"> <b>Correo Electrónico:</b><br></br> {profile.emailAddress}</h1> */}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    </div>
-                        )) 
-                    }
-                </div>
-            </div>
+            
         </Layout>
     );
 }
