@@ -1,5 +1,6 @@
 import Layout from "../../../components/layout"
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import { PrismaClient } from "@prisma/client"
 const prisma = new PrismaClient();
 
@@ -7,6 +8,17 @@ const prisma = new PrismaClient();
 function profiles({profiles}){
     const dataUsers = JSON.parse(profiles);
     const usuario = false;
+    const [dataFiltered, setFilter] = useState([]);   
+    const [query, setQuery] = useState("");
+    
+    const handleChange = () => {
+        return dataUsers.filter((el) => el.namePostulant.toLowerCase().includes(query.toLowerCase()));
+
+    }
+    useEffect(() => {
+        setFilter(handleChange());
+    },[dataUsers])
+    
     return (
         <>
             <Layout user={usuario}>
@@ -14,9 +26,18 @@ function profiles({profiles}){
                 <p className="text-center">
                     Bienvenido {usuario.nameUser}, aquí encontraras todos los perfiles disponibles para contratos. 
                 </p>
+            <div class="flex text-center justify-center">
+            <div class="input-wrapper border-2">
+	                <input onChange={e => setQuery(e.target.value)} type="search" class="input" placeholder="Buscar por nombre" className="focus:border-0"/>
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            </div>
                 <div className="grid-cols-3 md:grid">
                     {
-                        dataUsers.map(user => (
+                        dataFiltered.map(user => (
                             <div key={user.idPostulant}>
                                 <Link href={'/advanced/profiles/'+user.idPostulant} >
                                     <div key={user.userId} className="p-2 my-6 cursor-pointer md:my-9 card">

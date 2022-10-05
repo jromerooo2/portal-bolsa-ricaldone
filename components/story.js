@@ -57,7 +57,7 @@ export default function Story(props){
 
       </div>
 
-        <div className='grid-cols-3 gap-3 mt-3 md:mt-9 md:grid p-5'>
+        <div className='grid-cols-3 gap-3 p-5 mt-3 md:mt-9 md:grid'>
             {
                 dateFiltered.map((story, index) => {
                     return (
