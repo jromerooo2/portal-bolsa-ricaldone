@@ -22,9 +22,9 @@ function profiles({profiles}){
     return (
         <>
             <Layout user={usuario}>
-                <h1 className="p-8 text-3xl font-bold text-center">Perfiles Disponibles</h1>
-                <p className="text-center">
-                    Bienvenido {usuario.nameUser}, aquí encontraras todos los perfiles disponibles para contratos. 
+                <h1 className="p-8 text-3xl Font-bold text-center text-green-900">Perfiles Disponibles</h1>
+                <p className="text-2xl text-center text-lime-900 Font">
+                    Bienvenido{usuario.nameUser}, aquí encontraras todos los perfiles disponibles para contratos. 
                 </p>
             <div class="flex text-center justify-center">
             <div class="input-wrapper border-2">
@@ -40,12 +40,12 @@ function profiles({profiles}){
                         dataFiltered.map(user => (
                             <div key={user.idPostulant}>
                                 <Link href={'/advanced/profiles/'+user.idPostulant} >
-                                    <div key={user.userId} className="p-2 my-6 cursor-pointer md:my-9 card">
+                                    <div key={user.userId} className="p-2 my-6 cursor-pointer md:my-9 card text-lime-900">
                                         <div className={`bg-white rounded-lg shadow-xl p-4 ${user.Alumni ? "border border-yellow-500":""}`}>
                                             <span className={`rounded p-2 bg-red-500 text-white absolute -mt-8 ${user.Alumni ? "":"hidden"}`}>Recomendado</span>
                                             <img src={`data:image/jpeg;base64,${user.photoPostulant}`} alt={user.namePostulant} className="mx-auto rounded h-36" />
-                                            <h2 className="text-xl font-bold">{user.namePostulant +" "+ user.lastName}</h2>
-                                            <p>{user.mailPostulant}</p>
+                                            <h2 className="text-xl text-center font-bold pt-2.5 Font">{user.namePostulant +" "+ user.lastName}</h2>
+                                            <p className="text-lg text-center Font">{user.mailPostulant}</p>
                                             {/* <p>{user.phoneNumber}</p>
                                             <p>{user.emailAddress}</p> */}
                                         </div>

@@ -42,7 +42,7 @@ export default function FormLogin() {
       <div className='md:flex justify-between items-center md:h-[750px]'>
         <div className='flex flex-col items-center space-y-6 md:w-1/2 p-7 md:p-0'>
           <Image src='/logo.png' alt='logo' width={120} height={120} />
-          <h1 className='text-center text-green-saculum text-4xl'>Bienvenido De Vuelta.</h1>
+          <h1 className='text-center text-green-saculum text-4xl'>Bienvenido</h1>
           <p className='text-center text-gray-600 font-poppins tracking-wide'> Inicia Sesión </p>
 
           <form className='space-y-5 md:w-1/2 w-full' onSubmit={handleLoginLocal}>

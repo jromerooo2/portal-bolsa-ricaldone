@@ -62,8 +62,8 @@ function Details({usuario,profile}) {
     }
     return (
         <Layout>
-            <Link href='/advanced/profiles/' >
-                <svg xmlns="http://www.w3.org/2000/svg" className="cursor-pointer icon icon-tabler icon-tabler-arrow-left" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
+            <Link href='/advanced/profiles/'>
+                <svg xmlns="http://www.w3.org/2000/svg" className="m-3 cursor-pointer icon icon-tabler icon-tabler-arrow-left" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <line x1="5" y1="12" x2="11" y2="18" />
@@ -72,13 +72,13 @@ function Details({usuario,profile}) {
             </Link>
             <div className="flex items-center justify-center">
                 <div className="items-center md:flex space-x-7">
-                    <img src={`data:image/jpeg;base64,${profile.photoPostulant}`} alt={profile.name} className="mx-auto rounded-full md:h-96" />
+                    <img src={`data:image/jpeg;base64,${profile.photoPostulant}`} alt={profile.name} className="mx-auto rounded-full ml-2 md:h-96" />
                     <div className="space-y-5">
-                        <h1 className="text-3xl font-bold">{profile.namePostulant +" " +profile.lastName}</h1>
-                        <div className="md:grid grid-cols-3 block mr-[1rem] md:mx-0 ">
+                        <h1 className="text-3xl font-bold text-green-900">{profile.namePostulant +" " +profile.lastName}</h1>
+                        <div className="md:grid grid-cols-3 block mr-[1rem] md:mx-0">
                             <div className="nested-container">
                                 <h1 className="text-xl"> 
-                                    <b>Area de Interés:</b>                                                                         
+                                    <b className="nested-title">Area de Interés:</b>                                                                         
                                 </h1>
                                 <span className="nested-camp">
                                         {profile.workSubjects.WorkSubject}
@@ -86,7 +86,7 @@ function Details({usuario,profile}) {
                             </div>
                             <div className="nested-container">
                                 <h1 className="text-xl"> 
-                                    <b>Tipo de Contrato:</b>                                
+                                    <b className="nested-title">Tipo de Contrato:</b>                                
                                 </h1>                            
                                 <span className="nested-camp">
                                         {profile.ContractType_ContractTypeToPostulants.WType}
@@ -94,7 +94,7 @@ function Details({usuario,profile}) {
                             </div>
                             <div className="nested-container">
                                 <h1 className="text-xl"> 
-                                    <b>Estudios Básicos:</b>                                
+                                    <b className="nested-title">Estudios Básicos:</b>                                
                                 </h1>                            
                                 <span className="nested-camp">
                                         {profile.HighType_HighTypeToPostulants.HighType}
@@ -102,7 +102,7 @@ function Details({usuario,profile}) {
                             </div>
                             <div className="nested-container">
                                 <h1 className="text-xl"> 
-                                    <b>Expectativa Salarial:</b>                                
+                                    <b className="nested-title">Expectativa Salarial:</b>                                
                                 </h1>                            
                                 <span className="nested-camp">
                                         {profile.SalaryState.Salary}
@@ -110,7 +110,7 @@ function Details({usuario,profile}) {
                             </div>
                             <div className="nested-container">
                                 <h1 className="text-xl"> 
-                                    <b>Trabajo Deseado:</b>                                
+                                    <b className="nested-title">Trabajo Deseado:</b>                                
                                 </h1>                            
                                 <span className="nested-camp">
                                         {profile.WorkPreference_PostulantsToWorkPreference.WPreference}
@@ -118,7 +118,7 @@ function Details({usuario,profile}) {
                             </div>
                             <div className="nested-container">
                                 <h1 className="text-xl"> 
-                                    <b>Situación :</b>                                
+                                    <b className="nested-title">Situación :</b>                                
                                 </h1>                            
                                 <span className="nested-camp">
                                         {profile.WorkState.WorkState}
@@ -126,7 +126,7 @@ function Details({usuario,profile}) {
                             </div>
                             <div className="nested-container">
                                 <h1 className="text-xl"> 
-                                    <b>Ubicación :</b>                                
+                                    <b className="nested-title">Ubicación :</b>                                
                                 </h1>                            
                                 <span className="nested-camp">
                                         {profile.Departments_DepartmentsToPostulants_RDepartment.Department}
@@ -134,8 +134,8 @@ function Details({usuario,profile}) {
                             </div>
                         
                         </div>
-                        <p className="text-xl text-center">{`Para solicitar información de ${profile.namePostulant +" "+ profile.lastName}, haz click en el botón de abajo`}</p>
-                        <button onClick={request} className="block px-4 py-2 mx-auto font-bold text-white bg-green-500 rounded hover:bg-green-700">Solicitar Información</button>
+                        <p className="text-xl text-center text-green-800 PText">{`Para solicitar información de ${profile.namePostulant +" "+ profile.lastName}, haz click en el botón de abajo`}</p>
+                        <button onClick={request} className="block px-4 py-2 mx-auto font-bold text-white bg-lime-600 rounded hover:bg-lime-900">Solicitar Información</button>
                         
                         <ToastContainer>
                         </ToastContainer>
@@ -144,7 +144,7 @@ function Details({usuario,profile}) {
                 
             </div>
             <div className="">
-                <h1 className="p-8 text-3xl font-bold text-center">Perfiles Recomendados</h1>
+                <h1 className="p-8 text-3xl font-bold text-center text-lime-900">Perfiles Recomendados</h1>
                 <div className="grid grid-cols-2 md:grid-cols-4 ">
                     {
                         randomProfiles.map(
