@@ -149,7 +149,7 @@ function Details({usuario,profile,randomProfiles}) {
 
             <div className="">
                 <h1 className="p-8 text-3xl font-bold text-center text-lime-900">Perfiles Recomendados</h1>
-                <div className="grid grid-flow-col auto-cols-auto auto-rows-auto">
+                <div className="grid grid-cols-3">
                     {
                         randomProfiles.map(
                             profile => (
