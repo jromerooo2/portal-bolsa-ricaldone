@@ -13,9 +13,12 @@ function profiles({profiles}){
     const [query, setQuery] = useState("");
 
     const handleChange = () => {
+        if(query === "Todos"){
+            return dataUsers = dataUsers;
+        }
         return dataUsers.filter((el) => el.workSubjects.WorkSubject.toLowerCase().includes(query.toLowerCase()));
-
     }
+    
     useEffect(() => {
         setFilter(handleChange());
     },[dataUsers])
@@ -31,6 +34,7 @@ function profiles({profiles}){
                 <h1 class="text-2xl text-center text-lime-900 Font">Buscar Por Area</h1>
                 <div class="input-wrapper">
                 <select className="p-2 mx-auto my-4 text-2xl text-center border-2 text-lime-900 Font" onChange={(e) => setQuery(e.target.value)}>
+                        <option value="Todos">Todos</option>
                         <option value="ARQUITECTURA">ARQUITECTURA</option>
                         <option value="DISEÑO GRAFICO">DISEÑO GRAFICO</option>
                         <option value="ELECTROMECANICA">ELECTROMECANICA</option>
