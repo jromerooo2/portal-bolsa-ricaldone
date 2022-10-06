@@ -15,9 +15,7 @@ function Details({usuario,profile,randomProfiles}) {
     profile = JSON.parse(profile); 
     let info_User = {
             wsubj: profile.WSubject,
-            salary: profile.Salary,
-            contract_type: profile.ContractType,
-            depa:profile.IDepartment
+            salary: profile.Salary
     }    
     
     //pickeando perfiles randoms con mismas caracteristicas
