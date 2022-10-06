@@ -158,7 +158,7 @@ function Details({usuario,profile,randomProfiles}) {
                                             <div  className="p-2 my-6 cursor-pointer md:my-9 card md:w-auto w-46">
                                                 <div className={`bg-white rounded-lg shadow-xl p-4 ${profile.Alumni ? "border border-yellow-500":""}`}>
                                                     <div className="flex items-center justify-center">
-                                                        <img src="./logo.png" alt={profile.photoPostulant} className="mx-auto rounded md:h-64" />
+                                                        <img src={profile.photoPostulant} alt={profile.namePostulant} className="mx-auto rounded md:h-64" />
                                                      </div>
                                                     <div className="space-y-5">
                                                         <h1 className="text-3xl font-bold">{profile.namePostulant} <br></br> {profile.lastName}</h1>
