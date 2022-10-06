@@ -20,7 +20,12 @@ export default async (req, res) => {
                     {
                         IDepartment: data.depa,
                     }
-                  ]
+                  ],
+                  NOT: {
+                    idPostulant: {
+                      is: data.idPostulant,
+                    },
+                  },
             },
         })
         return res.send(postulant);

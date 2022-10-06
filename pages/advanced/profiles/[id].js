@@ -11,28 +11,7 @@ import { info } from "autoprefixer";
 function Details({usuario,profile,randomProfiles}) {
 
     randomProfiles = JSON.parse(randomProfiles);
-    console.log(randomProfiles);
     profile = JSON.parse(profile); 
-    let info_User = {
-            wsubj: profile.WSubject,
-            salary: profile.Salary
-    }    
-    
-    //pickeando perfiles randoms con mismas caracteristicas
-    // const getProfiles = async () => {    
-    //     const res = await axios.get(`http://localhost:3000/api/profiles/`,{
-    //         params: {
-    //             info: info_User
-    //           }
-    //     });
-    //     alert("hola");
-    //     console.log(res.data);
-    //     randomProfiles = res.data;
-    // }
-    
-    // useEffect(() => {
-    //     getProfiles();
-    // },[]);
 
     const result = async () => {
         const data = await axios.get('/api/me');
@@ -213,7 +192,8 @@ export async function getServerSideProps({ params,req, res }) {
     
     let info_User = {
         wsubj: pr.WSubject,
-        salary: pr.Salary
+        salary: pr.Salary,
+        idPostulant: pr.idPostulant,
     }    
 
     const randomProfiles = await getRandomPostulants(info_User);
