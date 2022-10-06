@@ -193,7 +193,7 @@ export async function getServerSideProps({ params,req, res }) {
     let info_User = {
         wsubj: pr.WSubject,
         salary: pr.Salary,
-        idPostulant: pr.idPostulant,
+        idPostulant: pr.idPostulant
     }    
 
     const randomProfiles = await getRandomPostulants(info_User);
