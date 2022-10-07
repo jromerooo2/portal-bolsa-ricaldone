@@ -5,7 +5,7 @@ function Footer() {
 return (
         <footer className="bg-lime-100 ">
             <div
-                className="relative max-w-screen-xl mx-auto sm:px-6 lg:px-8 lg:pt-12"
+                className="relative max-w-screen-xl mx-auto sm:px-6 lg:px-8 lg:pt-3"
             >
 
                 <div className="lg:flex lg:items-end lg:justify-between">
