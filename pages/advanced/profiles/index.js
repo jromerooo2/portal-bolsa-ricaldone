@@ -36,19 +36,19 @@ function profiles({profiles}){
                 <select className="p-2 mx-auto my-4 text-2xl text-center border-2 text-lime-900 Font" onChange={(e) => setQuery(e.target.value)}>
                         <option value="Todos">Todos</option>
                         <option value="ARQUITECTURA">ARQUITECTURA</option>
-                        <option value="DISEÑO GRAFICO">DISEÑO GRAFICO</option>
-                        <option value="ELECTROMECANICA">ELECTROMECANICA</option>
-                        <option value="SISTEMAS INFORMATICOS">SISTEMAS INFORMATICOS</option>
-                        <option value="AERONAUTICO">AERONAUTICO</option>
+                        <option value="DISEÑO GRAFICO">DISEÑO GRÁFICO</option>
+                        <option value="ELECTROMECANICA">ELECTROMECÁNICA</option>
+                        <option value="SISTEMAS INFORMATICOS">SISTEMAS INFORMÁTICOS</option>
+                        <option value="AERONAUTICO">AERONÁUTICO</option>
                         <option value="ELECTRONICA">ELECTRONICA</option>
-                        <option value="HOTELERIA">HOTELERIA</option>
+                        <option value="HOSTELERÍA">HOSTELERÍA</option>
                         <option value="MECÁNICA INDUSTRIAL">MECÁNICA INDUSTRIAL</option>
                         <option value="MANTENIMIENTO AUTOMOTRIZ">MANTENIMIENTO AUTOMOTRIZ</option>
-                        <option value="SISTEMAS ELECTRICOS">SISTEMAS ELECTRICOS</option>
+                        <option value="SISTEMAS ELECTRICOS">SISTEMAS ELÉCTRICOS</option>
                         <option value="ADMINISTRATIVO CONTABLE">ADMINISTRATIVO CONTABLE</option>
-                        <option value="SERVICIOS TURISTICOS">SERVICIOS TURISTICOS</option>
+                        <option value="SERVICIOS TURISTICOS">SERVICIOS TURÍSTICOS</option>
                         <option value="DESARROLLO DE SOFTWARE">DESARROLLO DE SOFTWARE</option>
-                        <option value="CONTADURIA">CONTADURIA</option>
+                        <option value="CONTADURIA">CONTADURÍA</option>
                         <option value="SECRETARIADO">SECRETARIADO</option>
                         <option value="SALUD">SALUD</option>
                         <option value="OTRO">OTRO</option>
