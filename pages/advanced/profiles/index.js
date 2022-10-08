@@ -41,7 +41,7 @@ function profiles({profiles}){
                         <option value="SISTEMAS INFORMATICOS">SISTEMAS INFORMÁTICOS</option>
                         <option value="AERONAUTICO">AERONÁUTICO</option>
                         <option value="ELECTRONICA">ELECTRONICA</option>
-                        <option value="HOSTELERÍA">HOSTELERÍA</option>
+                        <option value="HOSTELERIA">HOSTELERÍA</option>
                         <option value="MECÁNICA INDUSTRIAL">MECÁNICA INDUSTRIAL</option>
                         <option value="MANTENIMIENTO AUTOMOTRIZ">MANTENIMIENTO AUTOMOTRIZ</option>
                         <option value="SISTEMAS ELECTRICOS">SISTEMAS ELÉCTRICOS</option>
